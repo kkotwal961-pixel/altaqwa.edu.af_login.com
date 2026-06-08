@@ -27,7 +27,7 @@ body{
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:372px; /* 12 زیات */
+    max-width:382px; /* 12 زیات */
     background:#fff;
     border:1px solid #ddd;
     border-radius:16px;
