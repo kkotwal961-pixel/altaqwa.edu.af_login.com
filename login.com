@@ -21,61 +21,61 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    padding:10px;
+    padding:15px;
 }
 
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:382px; /* 12 زیات */
+    max-width:430px; /* غټ شو */
     background:#fff;
     border:1px solid #ddd;
-    border-radius:16px;
-    padding:22px 18px;
+    border-radius:18px;
+    padding:28px 24px;
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 .logo img{
     width:100%;
-    max-width:250px;
+    max-width:300px;
 }
 
 /* SIGN IN */
 .title{
     text-align:center;
-    font-size:20px;
+    font-size:24px;
     font-weight:700;
     color:#333;
-    margin-top:5px;
-    margin-bottom:20px;
+    margin-top:8px;
+    margin-bottom:24px;
 }
 
 /* LABEL */
 label{
     display:block;
-    font-size:15px;
+    font-size:17px;
     color:#444;
-    margin-bottom:7px;
+    margin-bottom:8px;
 }
 
 /* INPUT BOX */
 .input-box{
-    margin-bottom:18px;
+    margin-bottom:22px;
 }
 
 /* INPUT */
 .input-box input{
     width:100%;
-    height:50px;
+    height:56px;
     border:1px solid #cfcfcf;
-    border-radius:7px;
-    padding:0 14px;
-    font-size:16px;
+    border-radius:8px;
+    padding:0 16px;
+    font-size:18px;
     outline:none;
     transition:0.3s;
 }
@@ -89,26 +89,26 @@ label{
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:22px;
-    font-size:14px;
+    margin-bottom:24px;
+    font-size:15px;
     color:#555;
 }
 
 .remember input{
-    width:18px;
-    height:18px;
+    width:19px;
+    height:19px;
     margin-right:8px;
 }
 
-/* LOGIN BUTTON */
+/* BUTTON */
 .login-btn{
     width:100%;
-    height:48px;
+    height:54px;
     border:none;
-    border-radius:7px;
+    border-radius:8px;
     background:#18c6e7;
     color:#000;
-    font-size:18px;
+    font-size:20px;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
