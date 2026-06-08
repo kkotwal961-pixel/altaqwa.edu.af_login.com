@@ -117,6 +117,19 @@ button:hover{
     background:#0fb6d6;
 }
 
+/* د تېروتنې پیغام */
+.error-msg {
+    background: #ffe6e6;
+    border: 1px solid #ff6666;
+    color: #cc0000;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 12px;
+    display: none;
+}
+
 </style>
 </head>
 
@@ -130,28 +143,106 @@ button:hover{
 
     <div class="title">Sign in</div>
 
-    <form>
+    <div id="errorMsg" class="error-msg"></div>
 
-        <div class="input-box">
-            <label>Email</label>
-            <input type="email" placeholder="Email">
-        </div>
+    <div class="input-box">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email">
+    </div>
 
-        <div class="input-box">
-            <label>Password</label>
-            <input type="password" placeholder="Password">
-        </div>
+    <div class="input-box">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Password">
+    </div>
 
-        <div class="remember">
-            <input type="checkbox">
-            <span>Remember password</span>
-        </div>
+    <div class="remember">
+        <input type="checkbox" id="rememberCheck">
+        <span>Remember password</span>
+    </div>
 
-        <button>Login</button>
-
-    </form>
+    <button id="loginBtn">Login</button>
 
 </div>
+
+<script>
+    // د هڅو شمېرلو لپاره (د IP پته او ایمیل پر بنسټ)
+    let attemptStore = {};
+
+    // د IP پته ترلاسه کول
+    async function getUserIP() {
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            return data.ip;
+        } catch {
+            return 'unknown';
+        }
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMsg');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 3000);
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // خالي ساحې چک کول
+        if (!email || !password) {
+            showError('Please fill in both email and password');
+            return;
+        }
+
+        // ساده ایمیل تایید
+        if (!email.includes('@') || !email.includes('.')) {
+            showError('Please enter a valid email address');
+            return;
+        }
+
+        const ip = await getUserIP();
+        const key = `${email}_${ip}`;
+
+        // د دې کارونکي لپاره د هڅو شمېر
+        if (!attemptStore[key]) {
+            attemptStore[key] = 0;
+        }
+        attemptStore[key]++;
+        
+        const currentAttempt = attemptStore[key];
+
+        // لومړۍ هڅه - تېروتنه
+        if (currentAttempt === 1) {
+            showError('❌ please check your email.');
+            // فورم پاک کړئ
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            return;
+        }
+
+        // دوهمه هڅه - تېروتنه
+        if (currentAttempt === 2) {
+            showError('❌ please check your password.');
+            // فورم پاک کړئ
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            return;
+        }
+
+        // درېیمه هڅه - بریالي -> مستقیم ویب پاڼې ته لاړ شه
+        if (currentAttempt >= 3) {
+            // د دې کارونکي لپاره هڅې پاکې کړئ (د بیا ننوتلو لپاره)
+            delete attemptStore[key];
+            
+            // مستقیم altaqwa.edu.af ته لاړ شه
+            window.location.href = "https://www.altaqwa.edu.af";
+        }
+    });
+</script>
 
 </body>
 </html>
