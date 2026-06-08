@@ -27,7 +27,7 @@ body{
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:360px;
+    max-width:370px;
     background:#fff;
     border:1px solid #ddd;
     border-radius:16px;
@@ -42,7 +42,7 @@ body{
 
 .logo img{
     width:100%;
-    max-width:260px;
+    max-width:250px;
 }
 
 /* SIGN IN */
