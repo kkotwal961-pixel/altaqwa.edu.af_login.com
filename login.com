@@ -18,27 +18,25 @@ body{
     background:#f5f5f5;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
+    align-items:center;
     min-height:100vh;
-    padding-top:120px;
-    padding-left:10px;
-    padding-right:10px;
+    padding:10px;
 }
 
-/* MAIN BOX */
+/* LOGIN BOX */
 .login-container{
     width:100%;
     max-width:360px;
     background:#fff;
     border:1px solid #ddd;
-    border-radius:16px;
-    padding:22px 18px;
+    border-radius:18px;
+    padding:24px 18px;
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:8px;
+    margin-bottom:5px;
 }
 
 .logo img{
@@ -49,10 +47,10 @@ body{
 /* TITLE */
 .title{
     text-align:center;
-    font-size:32px;
-    font-weight:300;
+    font-size:26px;
+    font-weight:bold;
     color:#333;
-    margin-top:5px;
+    margin-top:8px;
     margin-bottom:22px;
 }
 
@@ -64,7 +62,7 @@ label{
     margin-bottom:7px;
 }
 
-/* INPUT BOX */
+/* INPUTS */
 .input-box{
     margin-bottom:18px;
 }
@@ -75,7 +73,7 @@ label{
     border:1px solid #cfcfcf;
     border-radius:7px;
     padding:0 14px;
-    font-size:17px;
+    font-size:16px;
     outline:none;
     transition:0.3s;
 }
@@ -90,13 +88,13 @@ label{
     display:flex;
     align-items:center;
     margin-bottom:22px;
-    font-size:15px;
+    font-size:14px;
     color:#555;
 }
 
 .remember input{
-    width:18px;
-    height:18px;
+    width:17px;
+    height:17px;
     margin-right:8px;
 }
 
@@ -129,7 +127,7 @@ label{
         <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
     </div>
 
-    <!-- TITLE -->
+    <!-- SIGN IN -->
     <div class="title">
         Sign in
     </div>
