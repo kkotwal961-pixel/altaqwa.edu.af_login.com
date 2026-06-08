@@ -27,7 +27,7 @@ body{
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:370px;
+    max-width:372px; /* 12 زیات */
     background:#fff;
     border:1px solid #ddd;
     border-radius:16px;
@@ -48,8 +48,8 @@ body{
 /* SIGN IN */
 .title{
     text-align:center;
-    font-size:20px;   /* سایز کم */
-    font-weight:700;  /* بولډ */
+    font-size:20px;
+    font-weight:700;
     color:#333;
     margin-top:5px;
     margin-bottom:20px;
@@ -63,11 +63,12 @@ label{
     margin-bottom:7px;
 }
 
-/* INPUT */
+/* INPUT BOX */
 .input-box{
     margin-bottom:18px;
 }
 
+/* INPUT */
 .input-box input{
     width:100%;
     height:50px;
@@ -99,7 +100,7 @@ label{
     margin-right:8px;
 }
 
-/* BUTTON */
+/* LOGIN BUTTON */
 .login-btn{
     width:100%;
     height:48px;
@@ -129,7 +130,7 @@ label{
         <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
     </div>
 
-    <!-- SIGN IN -->
+    <!-- TITLE -->
     <div class="title">
         Sign in
     </div>
