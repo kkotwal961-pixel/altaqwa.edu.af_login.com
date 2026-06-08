@@ -18,22 +18,24 @@ body{
     background:#f5f5f5;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     min-height:100vh;
-    padding:12px;
+    padding-top:120px;
+    padding-left:10px;
+    padding-right:10px;
 }
 
-/* Main Box */
+/* MAIN BOX */
 .login-container{
     width:100%;
-    max-width:390px;
+    max-width:360px;
     background:#fff;
     border:1px solid #ddd;
     border-radius:16px;
-    padding:28px 22px;
+    padding:22px 18px;
 }
 
-/* Logo */
+/* LOGO */
 .logo{
     text-align:center;
     margin-bottom:8px;
@@ -41,39 +43,39 @@ body{
 
 .logo img{
     width:100%;
-    max-width:270px;
+    max-width:250px;
 }
 
-/* Title */
+/* TITLE */
 .title{
     text-align:center;
-    font-size:40px;
+    font-size:32px;
     font-weight:300;
     color:#333;
-    margin-top:8px;
-    margin-bottom:28px;
+    margin-top:5px;
+    margin-bottom:22px;
 }
 
-/* Labels */
+/* LABELS */
 label{
     display:block;
-    font-size:16px;
+    font-size:15px;
     color:#444;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-/* Inputs */
+/* INPUT BOX */
 .input-box{
-    margin-bottom:22px;
+    margin-bottom:18px;
 }
 
 .input-box input{
     width:100%;
-    height:54px;
+    height:50px;
     border:1px solid #cfcfcf;
-    border-radius:8px;
-    padding:0 15px;
-    font-size:18px;
+    border-radius:7px;
+    padding:0 14px;
+    font-size:17px;
     outline:none;
     transition:0.3s;
 }
@@ -83,12 +85,12 @@ label{
     box-shadow:0 0 5px rgba(0,123,255,0.3);
 }
 
-/* Checkbox */
+/* REMEMBER */
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:25px;
-    font-size:16px;
+    margin-bottom:22px;
+    font-size:15px;
     color:#555;
 }
 
@@ -98,15 +100,15 @@ label{
     margin-right:8px;
 }
 
-/* Button */
+/* BUTTON */
 .login-btn{
     width:100%;
-    height:54px;
+    height:50px;
     border:none;
-    border-radius:8px;
+    border-radius:7px;
     background:#18c6e7;
     color:#000;
-    font-size:20px;
+    font-size:19px;
     cursor:pointer;
     transition:0.3s;
 }
@@ -135,21 +137,25 @@ label{
     <!-- FORM -->
     <form>
 
+        <!-- EMAIL -->
         <div class="input-box">
             <label>Email</label>
             <input type="email" placeholder="Email">
         </div>
 
+        <!-- PASSWORD -->
         <div class="input-box">
             <label>Password</label>
             <input type="password" placeholder="Password">
         </div>
 
+        <!-- REMEMBER -->
         <div class="remember">
             <input type="checkbox">
             <span>Remember password</span>
         </div>
 
+        <!-- BUTTON -->
         <button class="login-btn" type="submit">
             Login
         </button>
