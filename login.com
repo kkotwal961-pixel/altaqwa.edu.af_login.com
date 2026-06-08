@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AL-TAQWA Login</title>
+<title>Login</title>
 
 <style>
 
@@ -14,7 +14,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* FULL CENTER PAGE */
+/* FULL CENTER */
 body{
     height:100vh;
     display:flex;
@@ -23,86 +23,84 @@ body{
     background:#f3f3f3;
 }
 
-/* LOGIN CARD */
+/* BIG LOGIN BOX (HEX STYLE) */
 .login-container{
-    width:378px;
+    width:410px; /* لږ غټ شو */
     background:#fff;
-    border-radius:14px;
+    border-radius:16px;
+    padding:34px 30px;
     border:1px solid #e0e0e0;
-    padding:30px 26px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    box-shadow:0 3px 12px rgba(0,0,0,0.08);
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .logo img{
-    width:230px;
+    width:260px;
 }
 
-/* TITLE (Sign in) */
+/* TITLE */
 .title{
     text-align:center;
-    font-size:18px;
+    font-size:22px;
     font-weight:700;
+    margin-bottom:25px;
     color:#222;
-    margin-bottom:22px;
 }
 
-/* INPUT GROUP */
+/* INPUT */
 .input-box{
-    margin-bottom:14px;
+    margin-bottom:18px;
 }
 
 label{
     display:block;
-    font-size:13px;
-    color:#555;
+    font-size:15px;
     margin-bottom:6px;
+    color:#444;
 }
 
 input{
     width:100%;
-    height:44px;
-    border:1px solid #cfcfcf;
-    border-radius:7px;
-    padding:0 12px;
-    font-size:14px;
-    outline:none;
+    height:52px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    padding:0 14px;
+    font-size:15px;
 }
 
 input:focus{
     border:2px solid #18c6e7;
+    outline:none;
 }
 
 /* REMEMBER */
 .remember{
     display:flex;
     align-items:center;
-    font-size:13px;
-    margin:10px 0 18px;
-    color:#444;
+    margin:12px 0 20px;
+    font-size:14px;
 }
 
 .remember input{
-    width:15px;
-    height:15px;
+    width:16px;
+    height:16px;
     margin-right:8px;
 }
 
 /* BUTTON */
 button{
     width:100%;
-    height:44px;
+    height:52px;
     border:none;
-    border-radius:7px;
+    border-radius:8px;
     background:#18c6e7;
-    color:#000;
-    font-size:15px;
-    font-weight:700;
+    font-size:16px;
+    font-weight:bold;
     cursor:pointer;
 }
 
