@@ -14,33 +14,42 @@
     font-family: Arial, sans-serif;
 }
 
-/* FULL CENTER */
 body{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:#f3f3f3;
+    padding:0;
 }
 
-/* BIG LOGIN BOX (HEX STYLE) */
 .login-container{
-    width:410px; /* لږ غټ شو */
+    width:480px;
+    max-width:95%;
+    height:479px;
+
     background:#fff;
     border-radius:16px;
-    padding:34px 30px;
+
+    /* bottom بیا 6px کم شو */
+    padding:38px 14px 26px 14px;
+
     border:1px solid #e0e0e0;
-    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 .logo img{
-    width:260px;
+    width:280px;
 }
 
 /* TITLE */
@@ -48,7 +57,7 @@ body{
     text-align:center;
     font-size:22px;
     font-weight:700;
-    margin-bottom:25px;
+    margin-bottom:26px;
     color:#222;
 }
 
@@ -66,7 +75,7 @@ label{
 
 input{
     width:100%;
-    height:52px;
+    height:54px;
     border-radius:8px;
     border:1px solid #ccc;
     padding:0 14px;
@@ -78,11 +87,11 @@ input:focus{
     outline:none;
 }
 
-/* REMEMBER */
+/* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
-    margin:12px 0 20px;
+    margin:14px 0 22px;
     font-size:14px;
 }
 
@@ -95,7 +104,7 @@ input:focus{
 /* BUTTON */
 button{
     width:100%;
-    height:52px;
+    height:54px;
     border:none;
     border-radius:8px;
     background:#18c6e7;
