@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AL-TAQWA Login</title>
+<title>Login Page</title>
 
 <style>
 
@@ -14,108 +14,97 @@
     font-family: Arial, sans-serif;
 }
 
-/* BODY */
+/* FULL SCREEN CENTER */
 body{
-    background:#f5f5f5;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
-    padding:18px;
+    background:#f5f5f5;
 }
 
-/* LOGIN BOX */
+/* LOGIN CARD */
 .login-container{
-    width:100%;
-    max-width:400px; /* 400 شو */
+    width:360px;          /* د عکس په شان مناسب سایز */
     background:#fff;
+    border-radius:16px;
+    padding:25px 22px;
     border:1px solid #ddd;
-    border-radius:18px;
-    padding:30px 26px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .logo img{
-    width:100%;
-    max-width:300px;
+    width:220px;
+    height:auto;
 }
 
-/* SIGN IN */
+/* TITLE */
 .title{
     text-align:center;
-    font-size:24px;
+    font-size:20px;
     font-weight:700;
+    margin-bottom:20px;
     color:#333;
-    margin-top:8px;
-    margin-bottom:24px;
 }
 
-/* LABEL */
+/* INPUT GROUP */
+.input-box{
+    margin-bottom:15px;
+}
+
 label{
     display:block;
-    font-size:17px;
+    font-size:14px;
+    margin-bottom:6px;
     color:#444;
-    margin-bottom:8px;
 }
 
-/* INPUT BOX */
-.input-box{
-    margin-bottom:22px;
-}
-
-/* INPUT */
-.input-box input{
+input{
     width:100%;
-    height:56px;
-    border:1px solid #cfcfcf;
+    height:45px;
+    border:1px solid #ccc;
     border-radius:8px;
-    padding:0 16px;
-    font-size:17px;
+    padding:0 12px;
+    font-size:15px;
     outline:none;
-    transition:0.3s;
 }
 
-.input-box input:focus{
-    border:2px solid #9ed2ff;
-    box-shadow:0 0 5px rgba(0,123,255,0.3);
+input:focus{
+    border:2px solid #18c6e7;
 }
 
-/* REMEMBER */
+/* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:24px;
-    font-size:15px;
-    color:#555;
+    font-size:14px;
+    margin:10px 0 18px 0;
 }
 
 .remember input{
-    width:20px;
-    height:20px;
+    width:16px;
+    height:16px;
     margin-right:8px;
 }
 
 /* BUTTON */
-.login-btn{
+button{
     width:100%;
-    height:54px;
+    height:45px;
+    background:#18c6e7;
     border:none;
     border-radius:8px;
-    background:#18c6e7;
-    color:#000;
-    font-size:20px;
+    font-size:16px;
     font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
 }
 
-.login-btn:hover{
+button:hover{
     background:#0fb6d6;
 }
 
@@ -126,43 +115,28 @@ label{
 
 <div class="login-container">
 
-    <!-- LOGO -->
     <div class="logo">
-        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
+        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg">
     </div>
 
-    <!-- TITLE -->
-    <div class="title">
-        Sign in
+    <div class="title">Sign in</div>
+
+    <div class="input-box">
+        <label>Email</label>
+        <input type="email" placeholder="Email">
     </div>
 
-    <!-- FORM -->
-    <form>
+    <div class="input-box">
+        <label>Password</label>
+        <input type="password" placeholder="Password">
+    </div>
 
-        <!-- EMAIL -->
-        <div class="input-box">
-            <label>Email</label>
-            <input type="email" placeholder="Email">
-        </div>
+    <div class="remember">
+        <input type="checkbox">
+        <span>Remember password</span>
+    </div>
 
-        <!-- PASSWORD -->
-        <div class="input-box">
-            <label>Password</label>
-            <input type="password" placeholder="Password">
-        </div>
-
-        <!-- REMEMBER -->
-        <div class="remember">
-            <input type="checkbox">
-            <span>Remember password</span>
-        </div>
-
-        <!-- BUTTON -->
-        <button class="login-btn" type="submit">
-            Login
-        </button>
-
-    </form>
+    <button>Login</button>
 
 </div>
 
