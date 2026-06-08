@@ -21,62 +21,62 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    padding:20px;
+    padding:18px;
 }
 
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:460px; /* 460 شو */
+    max-width:400px; /* 400 شو */
     background:#fff;
     border:1px solid #ddd;
-    border-radius:20px;
-    padding:38px 34px;
+    border-radius:18px;
+    padding:30px 26px;
     box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
 .logo img{
     width:100%;
-    max-width:340px;
+    max-width:300px;
 }
 
 /* SIGN IN */
 .title{
     text-align:center;
-    font-size:28px;
+    font-size:24px;
     font-weight:700;
     color:#333;
-    margin-top:10px;
-    margin-bottom:30px;
+    margin-top:8px;
+    margin-bottom:24px;
 }
 
 /* LABEL */
 label{
     display:block;
-    font-size:19px;
+    font-size:17px;
     color:#444;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 /* INPUT BOX */
 .input-box{
-    margin-bottom:26px;
+    margin-bottom:22px;
 }
 
 /* INPUT */
 .input-box input{
     width:100%;
-    height:62px;
+    height:56px;
     border:1px solid #cfcfcf;
-    border-radius:10px;
-    padding:0 18px;
-    font-size:19px;
+    border-radius:8px;
+    padding:0 16px;
+    font-size:17px;
     outline:none;
     transition:0.3s;
 }
@@ -90,26 +90,26 @@ label{
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:28px;
-    font-size:17px;
+    margin-bottom:24px;
+    font-size:15px;
     color:#555;
 }
 
 .remember input{
-    width:22px;
-    height:22px;
-    margin-right:10px;
+    width:20px;
+    height:20px;
+    margin-right:8px;
 }
 
 /* BUTTON */
 .login-btn{
     width:100%;
-    height:60px;
+    height:54px;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
     background:#18c6e7;
     color:#000;
-    font-size:22px;
+    font-size:20px;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
