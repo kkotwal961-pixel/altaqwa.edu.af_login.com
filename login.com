@@ -25,7 +25,7 @@ body{
 
 /* LOGIN CARD */
 .login-container{
-    width:360px;          /* د عکس په شان مناسب سایز */
+    width:387px;          /* د عکس په شان مناسب سایز */
     background:#fff;
     border-radius:16px;
     padding:25px 22px;
