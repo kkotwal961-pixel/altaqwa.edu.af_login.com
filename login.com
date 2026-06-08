@@ -42,7 +42,7 @@ body{
 
 .logo img{
     width:100%;
-    max-width:250px;
+    max-width:260px;
 }
 
 /* SIGN IN */
