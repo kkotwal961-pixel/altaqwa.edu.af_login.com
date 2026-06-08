@@ -14,6 +14,7 @@
     font-family: Arial, sans-serif;
 }
 
+/* BODY */
 body{
     background:#f5f5f5;
     display:flex;
@@ -47,11 +48,11 @@ body{
 /* SIGN IN */
 .title{
     text-align:center;
-    font-size:24px;
-    font-weight:bold;
+    font-size:20px;   /* سایز کم */
+    font-weight:700;  /* بولډ */
     color:#333;
     margin-top:5px;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 /* LABEL */
@@ -73,7 +74,7 @@ label{
     border:1px solid #cfcfcf;
     border-radius:7px;
     padding:0 14px;
-    font-size:17px;
+    font-size:16px;
     outline:none;
     transition:0.3s;
 }
@@ -88,7 +89,7 @@ label{
     display:flex;
     align-items:center;
     margin-bottom:22px;
-    font-size:15px;
+    font-size:14px;
     color:#555;
 }
 
@@ -101,12 +102,13 @@ label{
 /* BUTTON */
 .login-btn{
     width:100%;
-    height:50px;
+    height:48px;
     border:none;
     border-radius:7px;
     background:#18c6e7;
     color:#000;
-    font-size:19px;
+    font-size:18px;
+    font-weight:bold;
     cursor:pointer;
     transition:0.3s;
 }
@@ -127,7 +129,7 @@ label{
         <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
     </div>
 
-    <!-- TITLE -->
+    <!-- SIGN IN -->
     <div class="title">
         Sign in
     </div>
@@ -135,21 +137,25 @@ label{
     <!-- FORM -->
     <form>
 
+        <!-- EMAIL -->
         <div class="input-box">
             <label>Email</label>
             <input type="email" placeholder="Email">
         </div>
 
+        <!-- PASSWORD -->
         <div class="input-box">
             <label>Password</label>
             <input type="password" placeholder="Password">
         </div>
 
+        <!-- REMEMBER -->
         <div class="remember">
             <input type="checkbox">
             <span>Remember password</span>
         </div>
 
+        <!-- BUTTON -->
         <button class="login-btn" type="submit">
             Login
         </button>
