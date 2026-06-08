@@ -27,7 +27,7 @@ body{
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:520px; /* د عکس په شان غټ */
+    max-width:470px; /* د عکس په شان غټ */
     background:#fff;
     border:1px solid #ddd;
     border-radius:20px;
