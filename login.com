@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>AL-TAQWA Login</title>
 
 <style>
 
@@ -14,91 +14,95 @@
     font-family: Arial, sans-serif;
 }
 
-/* CENTER PAGE */
+/* FULL CENTER PAGE */
 body{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#f5f5f5;
+    background:#f3f3f3;
 }
 
-/* LOGIN BOX */
+/* LOGIN CARD */
 .login-container{
-    width:378px;   /* ستا غوښتل شوی سایز */
+    width:378px;
     background:#fff;
-    border:1px solid #ddd;
-    border-radius:18px;
-    padding:28px 24px;
+    border-radius:14px;
+    border:1px solid #e0e0e0;
+    padding:30px 26px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .logo img{
-    width:240px;
+    width:230px;
 }
 
-/* TITLE */
+/* TITLE (Sign in) */
 .title{
     text-align:center;
-    font-size:20px;
+    font-size:18px;
     font-weight:700;
+    color:#222;
     margin-bottom:22px;
 }
 
-/* INPUTS */
+/* INPUT GROUP */
 .input-box{
-    margin-bottom:16px;
+    margin-bottom:14px;
 }
 
 label{
     display:block;
-    font-size:14px;
+    font-size:13px;
+    color:#555;
     margin-bottom:6px;
-    color:#444;
 }
 
 input{
     width:100%;
-    height:48px;
-    border:1px solid #ccc;
-    border-radius:8px;
+    height:44px;
+    border:1px solid #cfcfcf;
+    border-radius:7px;
     padding:0 12px;
-    font-size:15px;
+    font-size:14px;
+    outline:none;
 }
 
 input:focus{
     border:2px solid #18c6e7;
-    outline:none;
 }
 
-/* CHECKBOX */
+/* REMEMBER */
 .remember{
     display:flex;
     align-items:center;
-    font-size:14px;
-    margin:12px 0 18px;
+    font-size:13px;
+    margin:10px 0 18px;
+    color:#444;
 }
 
 .remember input{
-    width:16px;
-    height:16px;
+    width:15px;
+    height:15px;
     margin-right:8px;
 }
 
 /* BUTTON */
 button{
     width:100%;
-    height:48px;
+    height:44px;
     border:none;
-    border-radius:8px;
+    border-radius:7px;
     background:#18c6e7;
-    font-size:16px;
-    font-weight:bold;
+    color:#000;
+    font-size:15px;
+    font-weight:700;
     cursor:pointer;
 }
 
@@ -120,6 +124,7 @@ button:hover{
     <div class="title">Sign in</div>
 
     <form>
+
         <div class="input-box">
             <label>Email</label>
             <input type="email" placeholder="Email">
@@ -136,6 +141,7 @@ button:hover{
         </div>
 
         <button>Login</button>
+
     </form>
 
 </div>
