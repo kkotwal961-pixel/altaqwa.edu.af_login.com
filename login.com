@@ -27,7 +27,7 @@ body{
 /* LOGIN BOX */
 .login-container{
     width:100%;
-    max-width:470px; /* د عکس په شان غټ */
+    max-width:460px; /* 460 شو */
     background:#fff;
     border:1px solid #ddd;
     border-radius:20px;
@@ -43,13 +43,13 @@ body{
 
 .logo img{
     width:100%;
-    max-width:360px;
+    max-width:340px;
 }
 
 /* SIGN IN */
 .title{
     text-align:center;
-    font-size:30px;
+    font-size:28px;
     font-weight:700;
     color:#333;
     margin-top:10px;
@@ -59,24 +59,24 @@ body{
 /* LABEL */
 label{
     display:block;
-    font-size:20px;
+    font-size:19px;
     color:#444;
     margin-bottom:10px;
 }
 
 /* INPUT BOX */
 .input-box{
-    margin-bottom:28px;
+    margin-bottom:26px;
 }
 
 /* INPUT */
 .input-box input{
     width:100%;
-    height:65px;
+    height:62px;
     border:1px solid #cfcfcf;
     border-radius:10px;
     padding:0 18px;
-    font-size:20px;
+    font-size:19px;
     outline:none;
     transition:0.3s;
 }
@@ -90,8 +90,8 @@ label{
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:30px;
-    font-size:18px;
+    margin-bottom:28px;
+    font-size:17px;
     color:#555;
 }
 
@@ -104,12 +104,12 @@ label{
 /* BUTTON */
 .login-btn{
     width:100%;
-    height:62px;
+    height:60px;
     border:none;
     border-radius:10px;
     background:#18c6e7;
     color:#000;
-    font-size:24px;
+    font-size:22px;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
