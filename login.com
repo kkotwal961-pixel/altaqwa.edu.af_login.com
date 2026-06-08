@@ -137,7 +137,7 @@ label{
 
     <!-- LOGO -->
     <div class="logo">
-        <img src="https://github.com/kkotwal961-pixel/altaqwa.edu.af-login/blob/main/Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
+        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="AL-TAQWA Logo">
     </div>
 
     <!-- TITLE -->
