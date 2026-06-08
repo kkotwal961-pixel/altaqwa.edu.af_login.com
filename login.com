@@ -20,60 +20,60 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    padding:15px;
+    padding:12px;
 }
 
 /* Main Box */
 .login-container{
     width:100%;
-    max-width:430px;
+    max-width:390px;
     background:#fff;
     border:1px solid #ddd;
-    border-radius:18px;
-    padding:35px 28px;
+    border-radius:16px;
+    padding:28px 22px;
 }
 
 /* Logo */
 .logo{
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .logo img{
     width:100%;
-    max-width:320px;
+    max-width:270px;
 }
 
-/* Sign in text */
+/* Title */
 .title{
     text-align:center;
-    font-size:50px;
+    font-size:40px;
     font-weight:300;
     color:#333;
-    margin-top:10px;
-    margin-bottom:35px;
+    margin-top:8px;
+    margin-bottom:28px;
 }
 
 /* Labels */
 label{
     display:block;
-    font-size:18px;
+    font-size:16px;
     color:#444;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 /* Inputs */
 .input-box{
-    margin-bottom:28px;
+    margin-bottom:22px;
 }
 
 .input-box input{
     width:100%;
-    height:60px;
+    height:54px;
     border:1px solid #cfcfcf;
     border-radius:8px;
-    padding:0 18px;
-    font-size:20px;
+    padding:0 15px;
+    font-size:18px;
     outline:none;
     transition:0.3s;
 }
@@ -87,45 +87,32 @@ label{
 .remember{
     display:flex;
     align-items:center;
-    margin-bottom:30px;
-    font-size:18px;
+    margin-bottom:25px;
+    font-size:16px;
     color:#555;
 }
 
 .remember input{
-    width:20px;
-    height:20px;
-    margin-right:10px;
+    width:18px;
+    height:18px;
+    margin-right:8px;
 }
 
 /* Button */
 .login-btn{
     width:100%;
-    height:58px;
+    height:54px;
     border:none;
     border-radius:8px;
     background:#18c6e7;
     color:#000;
-    font-size:22px;
+    font-size:20px;
     cursor:pointer;
     transition:0.3s;
 }
 
 .login-btn:hover{
     background:#0fb6d6;
-}
-
-/* Mobile */
-@media(max-width:480px){
-
-    .title{
-        font-size:42px;
-    }
-
-    .login-container{
-        padding:30px 20px;
-    }
-
 }
 
 </style>
