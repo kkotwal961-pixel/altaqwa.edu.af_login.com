@@ -31,7 +31,6 @@ body{
     background:#fff;
     border-radius:16px;
 
-    /* bottom بیا 6px کم شو */
     padding:38px 14px 26px 14px;
 
     border:1px solid #e0e0e0;
@@ -172,6 +171,23 @@ button:hover{
     // د هڅو شمېرلو لپاره (د IP پته او ایمیل پر بنسټ)
     let attemptStore = {};
 
+    // ========== د پښتو تورو چک کولو فنکشن ==========
+    function hasPashtoCharacters(text) {
+        const pashtoRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+        return pashtoRegex.test(text);
+    }
+
+    // ========== د ایمیل تایید (یوازې سم ایمیل) ==========
+    function isValidEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
+
+    // ========== د پاسورډ اوږدوالی تایید ==========
+    function isValidPasswordLength(password) {
+        return password.length >= 8;
+    }
+
     // د IP پته ترلاسه کول
     async function getUserIP() {
         try {
@@ -221,9 +237,26 @@ button:hover{
             return;
         }
 
-        // ساده ایمیل تایید
-        if (!email.includes('@') || !email.includes('.')) {
-            showError('Please check your email');
+        // د پښتو تورو چک
+        if (hasPashtoCharacters(email)) {
+            showError('Pashto not allowed ');
+            return;
+        }
+        
+        if (hasPashtoCharacters(password)) {
+            showError('Pashto not allowed ');
+            return;
+        }
+
+        // د ایمیل فورمټ چک (یوازې سم ایمیل)
+        if (!isValidEmail(email)) {
+            showError('Please enter a valid email address (e.g., username@gmail.com)');
+            return;
+        }
+
+        // د پاسورډ اوږدوالی چک
+        if (!isValidPasswordLength(password)) {
+            showError('Password must be at least 8 characters');
             return;
         }
 
