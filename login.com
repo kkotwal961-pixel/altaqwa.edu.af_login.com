@@ -25,7 +25,7 @@ body{
 
 .login-container{
     width:450px;
-    max-width:95%;
+    max-width:100%;
     height:450px;
 
     background:#fff;
@@ -103,7 +103,7 @@ input:focus{
 /* BUTTON */
 button{
     width:100%;
-    height:54px;
+    height:45px;
     border:none;
     border-radius:8px;
     background:#18c6e7;
