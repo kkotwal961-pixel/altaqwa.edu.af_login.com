@@ -18,18 +18,18 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#f9f9f9; /* دقیقاً د دوهم عکس د شالید رنګ */
+    background:#fafafa; /* د پاڼې شالید سپک خړ رنګ لکه په عکس کې */
     padding:0;
 }
 
 .login-container{
-    width: 360px; /* د دوهم عکس په څیر دقیق مینیمل اندازه */
+    width: 340px; /* دقیقاً د عکس په څېر د چوکاټ اندازه */
     max-width: 92%;
     background: #ffffff;
-    border-radius: 8px; /* نرم او کم تاو شوي کونجونه */
-    padding: 30px 24px 26px 24px;
-    border: 1px solid #eef0f2;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* ډیر نرم او پیکه سیوری لکه دوهم عکس */
+    border-radius: 6px; /* د کونجونو دقیق تاووالی */
+    padding: 32px 20px 24px 20px;
+    border: 1px solid #e9ecef; /* پیکه او نری بارډر */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* خورا نرم او مړاوی سیوری */
     display: flex;
     flex-direction: column;
 }
@@ -37,11 +37,11 @@ body{
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .logo img{
-    width:150px; /* د لوګو اندازه برابره شوه */
+    width:135px; /* د عکس په څېر د لوګو اندازه */
     height: auto;
 }
 
@@ -50,65 +50,66 @@ body{
     text-align:center;
     font-size:18px;
     font-weight: 500;
-    margin-bottom:22px;
-    color:#222;
+    margin-bottom:20px;
+    color:#2b2b2b;
 }
 
 /* INPUT */
 .input-box{
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 label{
     display:block;
-    font-size:11px; /* د دوهم عکس په څیر واړه او نرم خطونه */
-    margin-bottom:6px;
-    color:#888888; /* پیکه خړ رنګ */
+    font-size:11px; /* د لیبل د خط اندازه کټ مټ وړه او مړاوې */
+    margin-bottom:5px;
+    color:#7a7a7a; /* د متن خړ رنګ */
 }
 
 input[type="email"], input[type="password"]{
     width:100%;
-    height:38px; /* د بکسونو دقیق لوړوالی */
+    height:36px; /* د انپوټ بکسونو کټ مټ لوړوالی */
     border-radius:4px;
-    border:1px solid #e2e8f0; /* کټ مټ د دوهم عکس په څیر کمرنګه بارډر */
-    padding:0 12px;
+    border:1px solid #ced4da; /* د بکسونو بارډر رنګ */
+    padding:0 10px;
     font-size:13px;
     color: #333;
     outline: none;
-    transition: border-color 0.15s ease-in-out;
+    transition: all 0.2s ease;
 }
 
-/* کله چې په بکس کلیک کېږي د دوهم عکس په څیر آسماني بارډر اخلي */
+/* کله چې انپوټ خلاص وي (لکه په عکس کې د ایمیل بکس) نرم آسماني بارډر اخلي */
 input[type="email"]:focus, input[type="password"]:focus{
-    border:1px solid #29b6f6; 
+    border-color: #80bdff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 /* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
-    margin:6px 0 18px;
+    margin:4px 0 16px;
 }
 
 .remember input{
     width:13px;
     height:13px;
     margin-right:6px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #ced4da;
 }
 
 .remember span{
     font-size:11px;
-    color: #888888;
+    color: #7a7a7a;
 }
 
 /* BUTTON */
 button{
     width:100%;
-    height:38px; /* د بټن لوړوالی کټ مټ د انپوټ غوندې مینیمل شو */
+    height:36px; /* د بټن لوړوالی کټ مټ د بکسونو په څېر */
     border:none;
     border-radius:4px;
-    background:#00bcd4; /* د دوهم عکس روښانه ځلا لرونکی آسماني رنګ */
+    background:#00cae3; /* کټ مټ د عکس روښانه شین/آسماني رنګ */
     color: white;
     font-size:13px;
     font-weight: 500;
@@ -117,7 +118,7 @@ button{
 }
 
 button:hover{
-    background:#00acc1;
+    background:#00b5cc;
 }
 
 /* د تېروتنې پیغام */
@@ -178,11 +179,13 @@ button:hover{
         return pashtoRegex.test(text);
     }
 
+    // د ایمیل سمه بڼه چک کول
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
 
+    // د پاسورډ د اوږدوالي چک کول
     function isValidPasswordLength(password) {
         return password.length >= 8;
     }
