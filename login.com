@@ -20,56 +20,58 @@ body{
     justify-content:center;
     align-items:center;
     background:#f3f3f3;
+    padding: 20px 16px;
 }
 
-/* ===== DESKTOP ===== */
+/* ===== DEFAULT = MOBILE ===== */
 .login-container{
-    width: 400px;
+    width: 100%;
+    max-width: 480px;
     background:#fff;
-    border-radius:14px;
-    padding: 36px 26px 28px 26px;
+    border-radius:16px;
+    padding: 32px 20px 28px 20px;
     border:1px solid #e0e0e0;
-    box-shadow:0 2px 10px rgba(0,0,0,0.07);
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
     display:flex;
     flex-direction:column;
 }
 
 .logo{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 .logo img{
-    width: 160px;
+    width: 260px;
 }
 
 .title{
     text-align:center;
-    font-size:20px;
+    font-size:24px;
     font-weight:700;
-    margin-bottom:22px;
+    margin-bottom:26px;
     color:#222;
 }
 
 .input-box{
-    margin-bottom:14px;
+    margin-bottom:16px;
 }
 
 label{
     display:block;
-    font-size:14px;
-    margin-bottom:5px;
+    font-size:15px;
+    margin-bottom:6px;
     color:#444;
 }
 
 input[type="email"],
 input[type="password"]{
     width:100%;
-    height:44px;
-    border-radius:7px;
+    height:54px;
+    border-radius:8px;
     border:1px solid #ccc;
-    padding:0 12px;
-    font-size:14px;
+    padding:0 14px;
+    font-size:16px;
 }
 
 input[type="email"]:focus,
@@ -81,24 +83,24 @@ input[type="password"]:focus{
 .remember{
     display:flex;
     align-items:center;
-    margin:10px 0 18px;
-    font-size:13px;
+    margin:12px 0 20px;
+    font-size:15px;
     color:#444;
 }
 
 .remember input[type="checkbox"]{
-    width:14px;
-    height:14px;
-    margin-right:7px;
+    width:18px;
+    height:18px;
+    margin-right:8px;
 }
 
 button{
     width:100%;
-    height:44px;
+    height:54px;
     border:none;
-    border-radius:7px;
+    border-radius:8px;
     background:#18c6e7;
-    font-size:15px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
     color:#000;
@@ -112,75 +114,69 @@ button:hover{
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 8px;
-    border-radius: 6px;
-    font-size: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
     text-align: center;
     margin-bottom: 10px;
     display: none;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
+/* ===== DESKTOP (768px او لوی) ===== */
+@media (min-width: 768px) {
 
     body{
-        align-items: center;
-        padding: 20px 16px;
+        padding: 0;
     }
 
     .login-container{
-        width: 100%;
-        border-radius: 16px;
-        padding: 32px 20px 28px 20px;
+        width: 400px;
+        max-width: 400px;
+        border-radius:14px;
+        padding: 36px 26px 28px 26px;
     }
 
     .logo img{
-        width: 260px;
+        width: 160px;
     }
 
     .title{
-        font-size: 24px;
-        margin-bottom: 26px;
+        font-size: 20px;
+        margin-bottom: 22px;
     }
 
     label{
-        font-size: 15px;
-        margin-bottom: 6px;
+        font-size: 14px;
+        margin-bottom: 5px;
     }
 
     input[type="email"],
     input[type="password"]{
-        height: 54px;
-        font-size: 16px;
-        border-radius: 8px;
-        padding: 0 14px;
+        height: 44px;
+        font-size: 14px;
+        border-radius: 7px;
+        padding: 0 12px;
     }
 
     .input-box{
-        margin-bottom: 16px;
+        margin-bottom: 14px;
     }
 
     .remember{
-        font-size: 15px;
-        margin: 12px 0 20px;
+        font-size: 13px;
+        margin: 10px 0 18px;
     }
 
     .remember input[type="checkbox"]{
-        width: 18px;
-        height: 18px;
-        margin-right: 8px;
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
     }
 
     button{
-        height: 54px;
-        font-size: 17px;
-        border-radius: 8px;
-        color: #000;
-    }
-
-    .error-msg{
-        font-size: 13px;
-        padding: 10px;
+        height: 44px;
+        font-size: 15px;
+        border-radius: 7px;
     }
 }
 
