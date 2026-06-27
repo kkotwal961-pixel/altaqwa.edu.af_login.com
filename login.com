@@ -24,10 +24,10 @@ body{
 
 /* ===== DESKTOP ===== */
 .login-container{
-    width: 340px;
+    width: 400px;
     background:#fff;
-    border-radius:12px;
-    padding: 28px 20px 22px 20px;
+    border-radius:14px;
+    padding: 36px 26px 28px 26px;
     border:1px solid #e0e0e0;
     box-shadow:0 2px 10px rgba(0,0,0,0.07);
     display:flex;
@@ -36,40 +36,40 @@ body{
 
 .logo{
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .logo img{
-    width: 130px;
+    width: 160px;
 }
 
 .title{
     text-align:center;
-    font-size:17px;
+    font-size:20px;
     font-weight:700;
-    margin-bottom:18px;
+    margin-bottom:22px;
     color:#222;
 }
 
 .input-box{
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 label{
     display:block;
-    font-size:13px;
-    margin-bottom:4px;
+    font-size:14px;
+    margin-bottom:5px;
     color:#444;
 }
 
 input[type="email"],
 input[type="password"]{
     width:100%;
-    height:38px;
-    border-radius:6px;
+    height:44px;
+    border-radius:7px;
     border:1px solid #ccc;
-    padding:0 10px;
-    font-size:13px;
+    padding:0 12px;
+    font-size:14px;
 }
 
 input[type="email"]:focus,
@@ -81,27 +81,27 @@ input[type="password"]:focus{
 .remember{
     display:flex;
     align-items:center;
-    margin:8px 0 16px;
-    font-size:12px;
+    margin:10px 0 18px;
+    font-size:13px;
     color:#444;
 }
 
 .remember input[type="checkbox"]{
-    width:13px;
-    height:13px;
-    margin-right:6px;
+    width:14px;
+    height:14px;
+    margin-right:7px;
 }
 
 button{
     width:100%;
-    height:38px;
+    height:44px;
     border:none;
-    border-radius:6px;
+    border-radius:7px;
     background:#18c6e7;
-    font-size:14px;
+    font-size:15px;
     font-weight:bold;
     cursor:pointer;
-    color:#fff;
+    color:#000;
 }
 
 button:hover{
@@ -175,6 +175,7 @@ button:hover{
         height: 54px;
         font-size: 17px;
         border-radius: 8px;
+        color: #000;
     }
 
     .error-msg{
