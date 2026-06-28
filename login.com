@@ -29,20 +29,23 @@ body {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    padding: 45px 25px 40px 25px; 
+    
+    /* د اصلي انځور دننی پډینګ سره سم */
+    padding: 32px 20px 24px 20px; 
+    
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 /* ============================================= */
-/* === موبایل سایز (14px کم شول) === */
+/* === موبایل سایز (د اصلي انځور پلنوالی) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        /* 445 څخه 431 ته راکم شو (14px کم) */
-        max-width: 431px; 
-        margin: 20px auto;
+        max-width: 92%; /* په موبایل کې په دقیق ډول د سکرین شاټ په څیر */
+        margin: 16px auto;
     }
 }
 
@@ -55,27 +58,26 @@ body {
     }
 
     .login-container {
-        /* 465 څخه 451 ته راکم شو (14px کم) */
-        max-width: 451px; 
-        padding: 50px 30px 40px 30px;
-        border: 1px solid #eee;
+        max-width: 420px; 
+        padding: 38px 26px 28px 26px;
+        border: none; 
     }
 
     .logo img {
-        max-width: 55%;
+        max-width: 60%;
     }
 }
 
 /* ============================================= */
-/* === دننی توکي === */
+/* === دننی توکي (د اصلي انځور سره سم) === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 14px;
 }
 
 .logo img {
-    max-width: 75%;
+    max-width: 80%;
     height: auto;
     display: inline-block;
 }
@@ -84,19 +86,19 @@ body {
     text-align: center;
     font-size: 22px;
     font-weight: 500;
-    color: #333;
-    margin-bottom: 28px;
+    color: #000000;
+    margin-bottom: 22px;
 }
 
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 label {
     display: block;
     font-size: 15px;
     font-weight: 500;
-    color: #444;
+    color: #000000;
     margin-bottom: 6px;
 }
 
@@ -108,7 +110,7 @@ input[type="password"] {
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     font-size: 15px;
-    color: #333;
+    color: #000000;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -120,15 +122,15 @@ input[type="password"]:focus {
 }
 
 input::placeholder {
-    color: #aaa;
+    color: #888;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     font-size: 14px;
-    color: #444;
+    color: #000000;
 }
 
 .remember-me input[type="checkbox"] {
@@ -144,7 +146,7 @@ button {
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
-    color: #ffffff;
+    color: #000000;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -163,7 +165,7 @@ button:hover {
     border-radius: 6px;
     font-size: 13px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     display: none;
 }
 </style>
@@ -196,7 +198,7 @@ button:hover {
 
     <div class="remember-me">
         <input type="checkbox" id="rememberCheck">
-        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer;">Remember password</label>
+        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer; color:#000;">Remember password</label>
     </div>
 
     <button id="loginBtn">Login</button>
