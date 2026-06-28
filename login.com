@@ -36,12 +36,12 @@ body {
 }
 
 /* ============================================= */
-/* === موبایل سایز (چپ او ښي خوا 5px زیات شول) === */
+/* === موبایل سایز (چپ او ښي خوا 10px زیات شول) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        /* دلته max-width 5px زیات کړل شو (360 -> 365) */
-        max-width: 365px; 
+        /* 365 څخه 375 ته لوړ شو (10px زیات) */
+        max-width: 375px; 
         margin: 20px auto;
     }
 }
@@ -55,8 +55,8 @@ body {
     }
 
     .login-container {
-        /* دلته هم max-width 5px زیات کړل شو (380 -> 385) */
-        max-width: 385px; 
+        /* 385 څخه 395 ته لوړ شو (10px زیات) */
+        max-width: 395px; 
         padding: 50px 30px 40px 30px;
         border: 1px solid #eee;
     }
@@ -174,9 +174,16 @@ button:hover {
 <div class="login-container">
     
     <div class="logo">
-        <!-- عکس د "images" فولډر څخه راوړل شو -->
-        <!-- که ستاسو د عکس نوم بل څه دی، نو دلته یې بدل کړئ (لکه screenshot.jpg) -->
-        <img src="images/logo.png" alt="AL-TAQWA Logo"> 
+        <!-- ============================================== -->
+        <!-- عکس په هر فولډر کې کېږدئ. دلته د فولډر نوم بدل کړئ -->
+        <!-- که عکس په اصلي فولډر کې وي، نو "images/" لرې کړئ -->
+        <!-- ============================================== -->
+        
+        <!-- د مثال په توګه: که عکس په "assets" فولډر کې وي -->
+        <img src="assets/logo.png" alt="AL-TAQWA Logo">
+        
+        <!-- که عکس په "images" فولډر کې وي، نو دا کاروئ: -->
+        <!-- <img src="images/logo.png" alt="AL-TAQWA Logo"> -->
     </div>
 
     <div class="title">Sign in</div>
