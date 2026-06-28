@@ -41,7 +41,7 @@ body {
 @media (max-width: 767px) {
     .login-container {
         /* 405 څخه 445 ته لوړ شو (40px نور زیات) */
-        max-width: 445px; 
+        max-width: 439px; 
         margin: 20px auto;
     }
 }
