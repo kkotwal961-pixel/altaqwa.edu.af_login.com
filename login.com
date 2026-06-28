@@ -23,15 +23,15 @@ body {
 }
 
 /* ============================================= */
-/* === د کارت بڼه === */
+/* === د کارت بڼه (لاندې او پورته 14px غټ شو) === */
 /* ============================================= */
 .login-container {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     
-    /* پورته او لاندې 10px زیات شول (45->55, 40->50) */
-    padding: 55px 25px 50px 25px; 
+    /* 14px زیات شو (پخوا 55/50 و، اوس 69/64 شو) */
+    padding: 69px 25px 64px 25px; 
     
     width: 100%;
     display: flex;
@@ -39,11 +39,12 @@ body {
 }
 
 /* ============================================= */
-/* === موبایل سایز === */
+/* === موبایل سایز (د عکس په څیر پلنوالی) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        max-width: 416px; 
+        /* د سکرین شاټ سره سم 92% پلنوالی */
+        max-width: 92%; 
         margin: 20px auto;
     }
 }
@@ -58,8 +59,8 @@ body {
 
     .login-container {
         max-width: 436px; 
-        /* ډیسټاپ کې هم 10px پورته او لاندې زیات شول (50->60, 40->50) */
-        padding: 60px 30px 50px 30px;
+        /* ډیسټاپ کې هم 14px زیات شو (پخوا 60/50 و، اوس 74/64 شو) */
+        padding: 74px 30px 64px 30px;
         border: 1px solid #eee;
     }
 
@@ -69,11 +70,11 @@ body {
 }
 
 /* ============================================= */
-/* === دننی توکي (یو بل ته نږدې / کوچني شول) === */
+/* === دننی توکي (لکه په عکس کې نږدې شوي) === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
+    margin-bottom: 18px; 
 }
 
 .logo img {
@@ -84,37 +85,38 @@ body {
 
 .title {
     text-align: center;
-    font-size: 21px; /* 22 څخه لږ کوچنی شو */
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 20px; /* 28 څخه 20 ته راکم شو */
+    font-size: 21px; 
+    font-weight: 400;
+    color: #222;
+    margin-bottom: 22px; 
 }
 
 .input-group {
-    margin-bottom: 12px; /* 18 څخه 12 ته راکم شو */
+    margin-bottom: 14px; 
 }
 
 label {
     display: block;
-    font-size: 14px; /* 15 څخه 14 ته راکم شو */
-    font-weight: 500;
-    color: #444;
-    margin-bottom: 4px; /* 6 څخه 4 ته راکم شو */
+    font-size: 14px; 
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 6px;
 }
 
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    height: 40px; /* 44 څخه 40 ته راکم شو */
-    padding: 0 10px; /* 12 څخه 10 ته راکم شو */
-    border: 1px solid #e0e0e0;
+    height: 42px; 
+    padding: 0 12px; 
+    border: 1px solid #dcdcdc;
     border-radius: 6px;
-    font-size: 14px; /* 15 څخه 14 ته راکم شو */
+    font-size: 15px; 
     color: #333;
     outline: none;
     transition: border-color 0.2s;
 }
 
+/* د انپوټ تمرکز (فوکس) بلاو بورډر لکه عکس */
 input[type="email"]:focus,
 input[type="password"]:focus {
     border: 1px solid #87CEEB; 
@@ -122,33 +124,33 @@ input[type="password"]:focus {
 }
 
 input::placeholder {
-    color: #aaa;
+    color: #999;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
-    font-size: 13px; /* 14 څخه 13 ته راکم شو */
-    color: #444;
+    margin-bottom: 20px; 
+    font-size: 13px; 
+    color: #333;
 }
 
 .remember-me input[type="checkbox"] {
-    width: 14px; /* 16 څخه 14 ته راکم شو */
-    height: 14px; /* 16 څخه 14 ته راکم شو */
-    margin-right: 6px; /* 8 څخه 6 ته راکم شو */
+    width: 14px; 
+    height: 14px; 
+    margin-right: 8px; 
     accent-color: #18c6e7;
 }
 
 button {
     width: 100%;
-    height: 40px; /* 44 څخه 40 ته راکم شو */
+    height: 42px; 
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
-    color: #ffffff;
-    font-size: 15px; /* 16 څخه 15 ته راکم شو */
-    font-weight: 500;
+    color: #000000; /* د عکس په څیر تور رنګ */
+    font-size: 16px; 
+    font-weight: 400;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -161,11 +163,11 @@ button:hover {
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 8px; /* 10 څخه 8 ته راکم شو */
+    padding: 8px; 
     border-radius: 6px;
-    font-size: 12px; /* 13 څخه 12 ته راکم شو */
+    font-size: 12px; 
     text-align: center;
-    margin-bottom: 12px; /* 15 څخه 12 ته راکم شو */
+    margin-bottom: 12px; 
     display: none;
 }
 </style>
@@ -198,7 +200,7 @@ button:hover {
 
     <div class="remember-me">
         <input type="checkbox" id="rememberCheck">
-        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer;">Remember password</label>
+        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer; color:#333;">Remember password</label>
     </div>
 
     <button id="loginBtn">Login</button>
