@@ -23,15 +23,15 @@ body {
 }
 
 /* ============================================= */
-/* === د کارت بڼه (بهرنی سایز سم دی) === */
+/* === د کارت بڼه === */
 /* ============================================= */
 .login-container {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     
-    /* دننی خالي ځای کم کړل شو ترڅو توکي منځ ته نږدې شي */
-    padding: 20px 20px 18px 20px; 
+    /* دننی ځای کم کړل شو ترڅو توکي یو بل ته نږدې شي */
+    padding: 30px 25px 25px 25px; 
     
     width: 100%;
     display: flex;
@@ -40,7 +40,7 @@ body {
 }
 
 /* ============================================= */
-/* === موبایل سایز (بهرنی پلنوالی: 380px) === */
+/* === موبایل سایز === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
@@ -50,7 +50,7 @@ body {
 }
 
 /* ============================================= */
-/* === ډیسټاپ سایز (بهرنی پلنوالی: 400px) === */
+/* === ډیسټاپ سایز === */
 /* ============================================= */
 @media (min-width: 768px) {
     body {
@@ -59,7 +59,7 @@ body {
 
     .login-container {
         max-width: 400px; 
-        padding: 24px 25px 22px 25px; /* ډیسټاپ کې هم دننی ځای کم شو */
+        padding: 35px 30px 30px 30px; /* دننی ځای دلته هم لږ کم شو */
         border: none; 
     }
 
@@ -69,11 +69,11 @@ body {
 }
 
 /* ============================================= */
-/* === دننی توکي (یو بل ته ډېر نږدې شول) === */
+/* === دننی توکي (یو بل ته نږدې شول) === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 10px; /* ډېر کم شو */
+    margin-bottom: 15px; /* کم شو */
 }
 
 .logo img {
@@ -84,10 +84,10 @@ body {
 
 .title {
     text-align: center;
-    font-size: 20px; 
+    font-size: 20px; /* لږ کوچنی شو */
     font-weight: 500;
     color: #000000;
-    margin-bottom: 14px; /* کم شو */
+    margin-bottom: 20px; /* کم شو */
 }
 
 .input-group {
@@ -96,7 +96,7 @@ body {
 
 label {
     display: block;
-    font-size: 14px;
+    font-size: 14px; /* لږ کوچنی شو */
     font-weight: 500;
     color: #000000;
     margin-bottom: 4px;
@@ -105,7 +105,7 @@ label {
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    height: 40px;
+    height: 40px; /* لږ ټیټ شو */
     padding: 0 10px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
@@ -122,7 +122,7 @@ input[type="password"]:focus {
 }
 
 input::placeholder {
-    color: #888;
+    color: #999999;
 }
 
 .remember-me {
@@ -134,15 +134,15 @@ input::placeholder {
 }
 
 .remember-me input[type="checkbox"] {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     margin-right: 6px;
     accent-color: #18c6e7;
 }
 
 button {
     width: 100%;
-    height: 40px;
+    height: 40px; /* لږ ټیټ شو */
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
