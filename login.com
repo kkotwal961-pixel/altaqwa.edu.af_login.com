@@ -23,27 +23,25 @@ body {
 }
 
 /* ============================================= */
-/* === د کارت بڼه (د موبایل او ډیسټاپ لپاره) === */
+/* === د کارت بڼه === */
 /* ============================================= */
 .login-container {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    
-    /* دا برخه مهمه ده: چپ او ښي خوا ته کم (نرم) او پورته/لاندې ته زیات ځای */
     padding: 45px 25px 40px 25px; 
-    
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 /* ============================================= */
-/* === موبایل سایز (د انځور په څیر) === */
+/* === موبایل سایز (چپ او ښي خوا 5px زیات شول) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        max-width: 360px; /* کارت به تنګ وي او غاړو ته خالي ځای پرېږدي */
+        /* دلته max-width 5px زیات کړل شو (360 -> 365) */
+        max-width: 365px; 
         margin: 20px auto;
     }
 }
@@ -57,8 +55,9 @@ body {
     }
 
     .login-container {
-        max-width: 380px; /* ډیسټاپ کې هم تنګ ساتل شوی */
-        padding: 50px 30px 40px 30px; /* پورته او لاندې ځای نور هم زیات شو */
+        /* دلته هم max-width 5px زیات کړل شو (380 -> 385) */
+        max-width: 385px; 
+        padding: 50px 30px 40px 30px;
         border: 1px solid #eee;
     }
 
@@ -86,11 +85,11 @@ body {
     font-size: 22px;
     font-weight: 500;
     color: #333;
-    margin-bottom: 28px; /* د سرلیک لاندې ځای زیات شو */
+    margin-bottom: 28px;
 }
 
 .input-group {
-    margin-bottom: 18px; /* د انپوټونو ترمنځ واټن زیات شو */
+    margin-bottom: 18px;
 }
 
 label {
@@ -127,7 +126,7 @@ input::placeholder {
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 25px; /* د چک باکس لاندې ځای زیات شو */
+    margin-bottom: 25px;
     font-size: 14px;
     color: #444;
 }
@@ -175,8 +174,9 @@ button:hover {
 <div class="login-container">
     
     <div class="logo">
-        <!-- دلته د خپل اصلي انځور نوم واچوئ -->
-        <img src="logo.png" alt="AL-TAQWA Logo"> 
+        <!-- عکس د "images" فولډر څخه راوړل شو -->
+        <!-- که ستاسو د عکس نوم بل څه دی، نو دلته یې بدل کړئ (لکه screenshot.jpg) -->
+        <img src="images/logo.png" alt="AL-TAQWA Logo"> 
     </div>
 
     <div class="title">Sign in</div>
