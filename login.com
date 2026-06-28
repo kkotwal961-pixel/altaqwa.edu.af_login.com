@@ -31,7 +31,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     
     /* دننی ځای کم کړل شو ترڅو توکي یو بل ته نږدې شي */
-    padding: 30px 25px 25px 25px; 
+    padding: 25px 20px 20px 20px; 
     
     width: 100%;
     display: flex;
