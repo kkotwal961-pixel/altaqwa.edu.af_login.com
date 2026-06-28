@@ -29,22 +29,19 @@ body {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    
-    /* دننی ځای کم کړل شو ترڅو توکي یو بل ته نږدې شي */
-    padding: 30px 25px 25px 25px; 
-    
+    padding: 45px 25px 40px 25px; 
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
 }
 
 /* ============================================= */
-/* === موبایل سایز === */
+/* === موبایل سایز (نور 15px کم شول) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        max-width: 380px; 
+        /* 431 څخه 416 ته راکم شو (15px کم) */
+        max-width: 416px; 
         margin: 20px auto;
     }
 }
@@ -58,9 +55,10 @@ body {
     }
 
     .login-container {
-        max-width: 400px; 
-        padding: 35px 30px 30px 30px; /* دننی ځای دلته هم لږ کم شو */
-        border: none; 
+        /* 451 څخه 436 ته راکم شو (15px کم) */
+        max-width: 436px; 
+        padding: 50px 30px 40px 30px;
+        border: 1px solid #eee;
     }
 
     .logo img {
@@ -69,11 +67,11 @@ body {
 }
 
 /* ============================================= */
-/* === دننی توکي (یو بل ته نږدې شول) === */
+/* === دننی توکي === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 15px; /* کم شو */
+    margin-bottom: 25px;
 }
 
 .logo img {
@@ -84,33 +82,33 @@ body {
 
 .title {
     text-align: center;
-    font-size: 20px; /* لږ کوچنی شو */
+    font-size: 22px;
     font-weight: 500;
-    color: #000000;
-    margin-bottom: 20px; /* کم شو */
+    color: #333;
+    margin-bottom: 28px;
 }
 
 .input-group {
-    margin-bottom: 12px; /* کم شو */
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    font-size: 14px; /* لږ کوچنی شو */
+    font-size: 15px;
     font-weight: 500;
-    color: #000000;
-    margin-bottom: 4px;
+    color: #444;
+    margin-bottom: 6px;
 }
 
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    height: 40px; /* لږ ټیټ شو */
-    padding: 0 10px;
+    height: 44px;
+    padding: 0 12px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 14px;
-    color: #000000;
+    font-size: 15px;
+    color: #333;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -122,33 +120,33 @@ input[type="password"]:focus {
 }
 
 input::placeholder {
-    color: #999999;
+    color: #aaa;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 18px; /* کم شو */
-    font-size: 13px;
-    color: #000000;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #444;
 }
 
 .remember-me input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
     accent-color: #18c6e7;
 }
 
 button {
     width: 100%;
-    height: 40px; /* لږ ټیټ شو */
+    height: 44px;
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
-    color: #000000;
-    font-size: 15px;
-    font-weight: 600;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -161,11 +159,11 @@ button:hover {
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 8px;
+    padding: 10px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     display: none;
 }
 </style>
@@ -198,7 +196,7 @@ button:hover {
 
     <div class="remember-me">
         <input type="checkbox" id="rememberCheck">
-        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer; color:#000;">Remember password</label>
+        <label for="rememberCheck" style="font-weight: 400; margin:0; cursor:pointer;">Remember password</label>
     </div>
 
     <button id="loginBtn">Login</button>
