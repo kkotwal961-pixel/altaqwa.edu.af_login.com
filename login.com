@@ -30,8 +30,8 @@ body {
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     
-    /* دننی ځای کم کړل شو ترڅو توکي یو بل ته نږدې شي */
-    padding: 30px 25px 25px 25px; 
+    /* د اصلي انځور دننی پډینګ سره سم */
+    padding: 32px 20px 24px 20px; 
     
     width: 100%;
     display: flex;
@@ -40,12 +40,12 @@ body {
 }
 
 /* ============================================= */
-/* === موبایل سایز === */
+/* === موبایل سایز (د اصلي انځور پلنوالی) === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        max-width: 380px; 
-        margin: 20px auto;
+        max-width: 92%; /* په موبایل کې په دقیق ډول د سکرین شاټ په څیر */
+        margin: 16px auto;
     }
 }
 
@@ -58,58 +58,58 @@ body {
     }
 
     .login-container {
-        max-width: 400px; 
-        padding: 35px 30px 30px 30px; /* دننی ځای دلته هم لږ کم شو */
+        max-width: 420px; 
+        padding: 38px 26px 28px 26px;
         border: none; 
     }
 
     .logo img {
-        max-width: 55%;
+        max-width: 60%;
     }
 }
 
 /* ============================================= */
-/* === دننی توکي (یو بل ته نږدې شول) === */
+/* === دننی توکي (د اصلي انځور سره سم) === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 15px; /* کم شو */
+    margin-bottom: 14px;
 }
 
 .logo img {
-    max-width: 75%;
+    max-width: 80%;
     height: auto;
     display: inline-block;
 }
 
 .title {
     text-align: center;
-    font-size: 20px; /* لږ کوچنی شو */
+    font-size: 22px;
     font-weight: 500;
     color: #000000;
-    margin-bottom: 20px; /* کم شو */
+    margin-bottom: 22px;
 }
 
 .input-group {
-    margin-bottom: 12px; /* کم شو */
+    margin-bottom: 16px;
 }
 
 label {
     display: block;
-    font-size: 14px; /* لږ کوچنی شو */
+    font-size: 15px;
     font-weight: 500;
     color: #000000;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    height: 40px; /* لږ ټیټ شو */
-    padding: 0 10px;
+    height: 44px;
+    padding: 0 12px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 15px;
     color: #000000;
     outline: none;
     transition: border-color 0.2s;
@@ -122,33 +122,33 @@ input[type="password"]:focus {
 }
 
 input::placeholder {
-    color: #999999;
+    color: #888;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 18px; /* کم شو */
-    font-size: 13px;
+    margin-bottom: 22px;
+    font-size: 14px;
     color: #000000;
 }
 
 .remember-me input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
     accent-color: #18c6e7;
 }
 
 button {
     width: 100%;
-    height: 40px; /* لږ ټیټ شو */
+    height: 44px;
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
     color: #000000;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -161,11 +161,11 @@ button:hover {
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 8px;
+    padding: 10px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: none;
 }
 </style>
