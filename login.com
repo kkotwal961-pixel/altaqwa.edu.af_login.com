@@ -29,18 +29,20 @@ body {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    padding: 45px 25px 40px 25px; 
+    
+    /* پورته او لاندې 10px زیات شول (45->55, 40->50) */
+    padding: 55px 25px 50px 25px; 
+    
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 /* ============================================= */
-/* === موبایل سایز (نور 15px کم شول) === */
+/* === موبایل سایز === */
 /* ============================================= */
 @media (max-width: 767px) {
     .login-container {
-        /* 431 څخه 416 ته راکم شو (15px کم) */
         max-width: 416px; 
         margin: 20px auto;
     }
@@ -55,9 +57,9 @@ body {
     }
 
     .login-container {
-        /* 451 څخه 436 ته راکم شو (15px کم) */
         max-width: 436px; 
-        padding: 50px 30px 40px 30px;
+        /* ډیسټاپ کې هم 10px پورته او لاندې زیات شول (50->60, 40->50) */
+        padding: 60px 30px 50px 30px;
         border: 1px solid #eee;
     }
 
@@ -67,11 +69,11 @@ body {
 }
 
 /* ============================================= */
-/* === دننی توکي === */
+/* === دننی توکي (یو بل ته نږدې / کوچني شول) === */
 /* ============================================= */
 .logo {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
 }
 
 .logo img {
@@ -82,32 +84,32 @@ body {
 
 .title {
     text-align: center;
-    font-size: 22px;
+    font-size: 21px; /* 22 څخه لږ کوچنی شو */
     font-weight: 500;
     color: #333;
-    margin-bottom: 28px;
+    margin-bottom: 20px; /* 28 څخه 20 ته راکم شو */
 }
 
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 12px; /* 18 څخه 12 ته راکم شو */
 }
 
 label {
     display: block;
-    font-size: 15px;
+    font-size: 14px; /* 15 څخه 14 ته راکم شو */
     font-weight: 500;
     color: #444;
-    margin-bottom: 6px;
+    margin-bottom: 4px; /* 6 څخه 4 ته راکم شو */
 }
 
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    height: 44px;
-    padding: 0 12px;
+    height: 40px; /* 44 څخه 40 ته راکم شو */
+    padding: 0 10px; /* 12 څخه 10 ته راکم شو */
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 14px; /* 15 څخه 14 ته راکم شو */
     color: #333;
     outline: none;
     transition: border-color 0.2s;
@@ -126,26 +128,26 @@ input::placeholder {
 .remember-me {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
-    font-size: 14px;
+    margin-bottom: 18px; /* 25 څخه 18 ته راکم شو */
+    font-size: 13px; /* 14 څخه 13 ته راکم شو */
     color: #444;
 }
 
 .remember-me input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
+    width: 14px; /* 16 څخه 14 ته راکم شو */
+    height: 14px; /* 16 څخه 14 ته راکم شو */
+    margin-right: 6px; /* 8 څخه 6 ته راکم شو */
     accent-color: #18c6e7;
 }
 
 button {
     width: 100%;
-    height: 44px;
+    height: 40px; /* 44 څخه 40 ته راکم شو */
     border: none;
     border-radius: 6px;
     background-color: #18c6e7;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 15px; /* 16 څخه 15 ته راکم شو */
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
@@ -159,11 +161,11 @@ button:hover {
     background: #ffe6e6;
     border: 1px solid #ff6666;
     color: #cc0000;
-    padding: 10px;
+    padding: 8px; /* 10 څخه 8 ته راکم شو */
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 12px; /* 13 څخه 12 ته راکم شو */
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* 15 څخه 12 ته راکم شو */
     display: none;
 }
 </style>
